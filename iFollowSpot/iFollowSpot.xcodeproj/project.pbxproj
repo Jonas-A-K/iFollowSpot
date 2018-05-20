@@ -1,0 +1,583 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DD2F6F6720B1915F00972132 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2F6F6620B1915F00972132 /* AppDelegate.swift */; };
+		DD2F6F6920B1915F00972132 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2F6F6820B1915F00972132 /* ViewController.swift */; };
+		DD2F6F6C20B1915F00972132 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD2F6F6A20B1915F00972132 /* Main.storyboard */; };
+		DD2F6F6E20B1916000972132 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD2F6F6D20B1916000972132 /* Assets.xcassets */; };
+		DD2F6F7120B1916000972132 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD2F6F6F20B1916000972132 /* LaunchScreen.storyboard */; };
+		DD2F6F7C20B1916100972132 /* iFollowSpotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2F6F7B20B1916100972132 /* iFollowSpotTests.swift */; };
+		DD2F6F8720B1916100972132 /* iFollowSpotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2F6F8620B1916100972132 /* iFollowSpotUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DD2F6F7820B1916100972132 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD2F6F5B20B1915F00972132 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD2F6F6220B1915F00972132;
+			remoteInfo = iFollowSpot;
+		};
+		DD2F6F8320B1916100972132 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD2F6F5B20B1915F00972132 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD2F6F6220B1915F00972132;
+			remoteInfo = iFollowSpot;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DD2F6F6320B1915F00972132 /* iFollowSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFollowSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD2F6F6620B1915F00972132 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DD2F6F6820B1915F00972132 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DD2F6F6B20B1915F00972132 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DD2F6F6D20B1916000972132 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DD2F6F7020B1916000972132 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DD2F6F7220B1916000972132 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD2F6F7720B1916100972132 /* iFollowSpotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iFollowSpotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD2F6F7B20B1916100972132 /* iFollowSpotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iFollowSpotTests.swift; sourceTree = "<group>"; };
+		DD2F6F7D20B1916100972132 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD2F6F8220B1916100972132 /* iFollowSpotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iFollowSpotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD2F6F8620B1916100972132 /* iFollowSpotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iFollowSpotUITests.swift; sourceTree = "<group>"; };
+		DD2F6F8820B1916100972132 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DD2F6F6020B1915F00972132 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD2F6F7420B1916100972132 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD2F6F7F20B1916100972132 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DD2F6F5A20B1915F00972132 = {
+			isa = PBXGroup;
+			children = (
+				DD2F6F6520B1915F00972132 /* iFollowSpot */,
+				DD2F6F7A20B1916100972132 /* iFollowSpotTests */,
+				DD2F6F8520B1916100972132 /* iFollowSpotUITests */,
+				DD2F6F6420B1915F00972132 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DD2F6F6420B1915F00972132 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DD2F6F6320B1915F00972132 /* iFollowSpot.app */,
+				DD2F6F7720B1916100972132 /* iFollowSpotTests.xctest */,
+				DD2F6F8220B1916100972132 /* iFollowSpotUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DD2F6F6520B1915F00972132 /* iFollowSpot */ = {
+			isa = PBXGroup;
+			children = (
+				DD2F6F6620B1915F00972132 /* AppDelegate.swift */,
+				DD2F6F6820B1915F00972132 /* ViewController.swift */,
+				DD2F6F6A20B1915F00972132 /* Main.storyboard */,
+				DD2F6F6D20B1916000972132 /* Assets.xcassets */,
+				DD2F6F6F20B1916000972132 /* LaunchScreen.storyboard */,
+				DD2F6F7220B1916000972132 /* Info.plist */,
+			);
+			path = iFollowSpot;
+			sourceTree = "<group>";
+		};
+		DD2F6F7A20B1916100972132 /* iFollowSpotTests */ = {
+			isa = PBXGroup;
+			children = (
+				DD2F6F7B20B1916100972132 /* iFollowSpotTests.swift */,
+				DD2F6F7D20B1916100972132 /* Info.plist */,
+			);
+			path = iFollowSpotTests;
+			sourceTree = "<group>";
+		};
+		DD2F6F8520B1916100972132 /* iFollowSpotUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DD2F6F8620B1916100972132 /* iFollowSpotUITests.swift */,
+				DD2F6F8820B1916100972132 /* Info.plist */,
+			);
+			path = iFollowSpotUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DD2F6F6220B1915F00972132 /* iFollowSpot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD2F6F8B20B1916100972132 /* Build configuration list for PBXNativeTarget "iFollowSpot" */;
+			buildPhases = (
+				DD2F6F5F20B1915F00972132 /* Sources */,
+				DD2F6F6020B1915F00972132 /* Frameworks */,
+				DD2F6F6120B1915F00972132 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iFollowSpot;
+			productName = iFollowSpot;
+			productReference = DD2F6F6320B1915F00972132 /* iFollowSpot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DD2F6F7620B1916100972132 /* iFollowSpotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD2F6F8E20B1916100972132 /* Build configuration list for PBXNativeTarget "iFollowSpotTests" */;
+			buildPhases = (
+				DD2F6F7320B1916100972132 /* Sources */,
+				DD2F6F7420B1916100972132 /* Frameworks */,
+				DD2F6F7520B1916100972132 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DD2F6F7920B1916100972132 /* PBXTargetDependency */,
+			);
+			name = iFollowSpotTests;
+			productName = iFollowSpotTests;
+			productReference = DD2F6F7720B1916100972132 /* iFollowSpotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DD2F6F8120B1916100972132 /* iFollowSpotUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD2F6F9120B1916100972132 /* Build configuration list for PBXNativeTarget "iFollowSpotUITests" */;
+			buildPhases = (
+				DD2F6F7E20B1916100972132 /* Sources */,
+				DD2F6F7F20B1916100972132 /* Frameworks */,
+				DD2F6F8020B1916100972132 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DD2F6F8420B1916100972132 /* PBXTargetDependency */,
+			);
+			name = iFollowSpotUITests;
+			productName = iFollowSpotUITests;
+			productReference = DD2F6F8220B1916100972132 /* iFollowSpotUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DD2F6F5B20B1915F00972132 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Jonas Kern";
+				TargetAttributes = {
+					DD2F6F6220B1915F00972132 = {
+						CreatedOnToolsVersion = 9.3.1;
+					};
+					DD2F6F7620B1916100972132 = {
+						CreatedOnToolsVersion = 9.3.1;
+						TestTargetID = DD2F6F6220B1915F00972132;
+					};
+					DD2F6F8120B1916100972132 = {
+						CreatedOnToolsVersion = 9.3.1;
+						TestTargetID = DD2F6F6220B1915F00972132;
+					};
+				};
+			};
+			buildConfigurationList = DD2F6F5E20B1915F00972132 /* Build configuration list for PBXProject "iFollowSpot" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DD2F6F5A20B1915F00972132;
+			productRefGroup = DD2F6F6420B1915F00972132 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DD2F6F6220B1915F00972132 /* iFollowSpot */,
+				DD2F6F7620B1916100972132 /* iFollowSpotTests */,
+				DD2F6F8120B1916100972132 /* iFollowSpotUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DD2F6F6120B1915F00972132 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD2F6F7120B1916000972132 /* LaunchScreen.storyboard in Resources */,
+				DD2F6F6E20B1916000972132 /* Assets.xcassets in Resources */,
+				DD2F6F6C20B1915F00972132 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD2F6F7520B1916100972132 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD2F6F8020B1916100972132 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DD2F6F5F20B1915F00972132 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD2F6F6920B1915F00972132 /* ViewController.swift in Sources */,
+				DD2F6F6720B1915F00972132 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD2F6F7320B1916100972132 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD2F6F7C20B1916100972132 /* iFollowSpotTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD2F6F7E20B1916100972132 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD2F6F8720B1916100972132 /* iFollowSpotUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DD2F6F7920B1916100972132 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD2F6F6220B1915F00972132 /* iFollowSpot */;
+			targetProxy = DD2F6F7820B1916100972132 /* PBXContainerItemProxy */;
+		};
+		DD2F6F8420B1916100972132 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD2F6F6220B1915F00972132 /* iFollowSpot */;
+			targetProxy = DD2F6F8320B1916100972132 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DD2F6F6A20B1915F00972132 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DD2F6F6B20B1915F00972132 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DD2F6F6F20B1916000972132 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DD2F6F7020B1916000972132 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DD2F6F8920B1916100972132 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DD2F6F8A20B1916100972132 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DD2F6F8C20B1916100972132 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = iFollowSpot/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "HAW-Hamburg.iFollowSpot";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DD2F6F8D20B1916100972132 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = iFollowSpot/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "HAW-Hamburg.iFollowSpot";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DD2F6F8F20B1916100972132 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = iFollowSpotTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "HAW-Hamburg.iFollowSpotTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iFollowSpot.app/iFollowSpot";
+			};
+			name = Debug;
+		};
+		DD2F6F9020B1916100972132 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = iFollowSpotTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "HAW-Hamburg.iFollowSpotTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iFollowSpot.app/iFollowSpot";
+			};
+			name = Release;
+		};
+		DD2F6F9220B1916100972132 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = iFollowSpotUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "HAW-Hamburg.iFollowSpotUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iFollowSpot;
+			};
+			name = Debug;
+		};
+		DD2F6F9320B1916100972132 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = iFollowSpotUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "HAW-Hamburg.iFollowSpotUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iFollowSpot;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DD2F6F5E20B1915F00972132 /* Build configuration list for PBXProject "iFollowSpot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD2F6F8920B1916100972132 /* Debug */,
+				DD2F6F8A20B1916100972132 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD2F6F8B20B1916100972132 /* Build configuration list for PBXNativeTarget "iFollowSpot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD2F6F8C20B1916100972132 /* Debug */,
+				DD2F6F8D20B1916100972132 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD2F6F8E20B1916100972132 /* Build configuration list for PBXNativeTarget "iFollowSpotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD2F6F8F20B1916100972132 /* Debug */,
+				DD2F6F9020B1916100972132 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD2F6F9120B1916100972132 /* Build configuration list for PBXNativeTarget "iFollowSpotUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD2F6F9220B1916100972132 /* Debug */,
+				DD2F6F9320B1916100972132 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DD2F6F5B20B1915F00972132 /* Project object */;
+}
