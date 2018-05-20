@@ -14,6 +14,7 @@
 		DD2F6F7120B1916000972132 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD2F6F6F20B1916000972132 /* LaunchScreen.storyboard */; };
 		DD2F6F7C20B1916100972132 /* iFollowSpotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2F6F7B20B1916100972132 /* iFollowSpotTests.swift */; };
 		DD2F6F8720B1916100972132 /* iFollowSpotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2F6F8620B1916100972132 /* iFollowSpotUITests.swift */; };
+		DD2F6F9520B19B3500972132 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2F6F9420B19B3500972132 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		DD2F6F8220B1916100972132 /* iFollowSpotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iFollowSpotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2F6F8620B1916100972132 /* iFollowSpotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iFollowSpotUITests.swift; sourceTree = "<group>"; };
 		DD2F6F8820B1916100972132 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD2F6F9420B19B3500972132 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		DD2F6F5A20B1915F00972132 = {
 			isa = PBXGroup;
 			children = (
+				DD2F6F9420B19B3500972132 /* Default-568h@2x.png */,
 				DD2F6F6520B1915F00972132 /* iFollowSpot */,
 				DD2F6F7A20B1916100972132 /* iFollowSpotTests */,
 				DD2F6F8520B1916100972132 /* iFollowSpotUITests */,
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD2F6F7120B1916000972132 /* LaunchScreen.storyboard in Resources */,
+				DD2F6F9520B19B3500972132 /* Default-568h@2x.png in Resources */,
 				DD2F6F6E20B1916000972132 /* Assets.xcassets in Resources */,
 				DD2F6F6C20B1915F00972132 /* Main.storyboard in Resources */,
 			);
