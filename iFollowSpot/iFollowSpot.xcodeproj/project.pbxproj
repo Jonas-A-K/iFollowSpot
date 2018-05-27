@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22CB99261513ABF2E00174BD /* Pods_iFollowSpotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A1310A2FC42C814A3FE62C /* Pods_iFollowSpotUITests.framework */; };
+		8F7AE803591910257979AC31 /* Pods_iFollowSpotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D44B564F21AEDB520CEDF0D /* Pods_iFollowSpotTests.framework */; };
 		DD2F6F6720B1915F00972132 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2F6F6620B1915F00972132 /* AppDelegate.swift */; };
 		DD2F6F6920B1915F00972132 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2F6F6820B1915F00972132 /* ViewController.swift */; };
 		DD2F6F6C20B1915F00972132 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD2F6F6A20B1915F00972132 /* Main.storyboard */; };
@@ -15,7 +17,8 @@
 		DD2F6F7C20B1916100972132 /* iFollowSpotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2F6F7B20B1916100972132 /* iFollowSpotTests.swift */; };
 		DD2F6F8720B1916100972132 /* iFollowSpotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2F6F8620B1916100972132 /* iFollowSpotUITests.swift */; };
 		DD2F6F9520B19B3500972132 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2F6F9420B19B3500972132 /* Default-568h@2x.png */; };
-		DD4F74E320BB1C69005EEF4E /* Podfile.txt in Resources */ = {isa = PBXBuildFile; fileRef = DD4F74E220BB1C69005EEF4E /* Podfile.txt */; };
+		DD3FFA1520BB1F810036E2AA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = DD3FFA1420BB1F810036E2AA /* Podfile */; };
+		FBB40F43C0FD21BF4C365AD0 /* Pods_iFollowSpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240EA84D3D3D9295BAE46156 /* Pods_iFollowSpot.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1756832277EA9D533E23F6BC /* Pods-iFollowSpotUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iFollowSpotUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iFollowSpotUITests/Pods-iFollowSpotUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1DDB0AA34D94C015ECFF7644 /* Pods-iFollowSpotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iFollowSpotTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iFollowSpotTests/Pods-iFollowSpotTests.debug.xcconfig"; sourceTree = "<group>"; };
+		240EA84D3D3D9295BAE46156 /* Pods_iFollowSpot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iFollowSpot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AEFFD65FFA2F287B90CCDF5 /* Pods-iFollowSpot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iFollowSpot.release.xcconfig"; path = "Pods/Target Support Files/Pods-iFollowSpot/Pods-iFollowSpot.release.xcconfig"; sourceTree = "<group>"; };
+		4D44B564F21AEDB520CEDF0D /* Pods_iFollowSpotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iFollowSpotTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B6147A253D66672EBCF69A7 /* Pods-iFollowSpotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iFollowSpotTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iFollowSpotTests/Pods-iFollowSpotTests.release.xcconfig"; sourceTree = "<group>"; };
+		8F5803312DD4FCAD4CC68867 /* Pods-iFollowSpotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iFollowSpotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iFollowSpotUITests/Pods-iFollowSpotUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DD2F6F6320B1915F00972132 /* iFollowSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFollowSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2F6F6620B1915F00972132 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD2F6F6820B1915F00972132 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +60,9 @@
 		DD2F6F8620B1916100972132 /* iFollowSpotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iFollowSpotUITests.swift; sourceTree = "<group>"; };
 		DD2F6F8820B1916100972132 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD2F6F9420B19B3500972132 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		DD4F74E220BB1C69005EEF4E /* Podfile.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile.txt; sourceTree = "<group>"; };
+		DD3FFA1420BB1F810036E2AA /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		E4F6E66A572B5E3FA6B5DA35 /* Pods-iFollowSpot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iFollowSpot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iFollowSpot/Pods-iFollowSpot.debug.xcconfig"; sourceTree = "<group>"; };
+		F6A1310A2FC42C814A3FE62C /* Pods_iFollowSpotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iFollowSpotUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBB40F43C0FD21BF4C365AD0 /* Pods_iFollowSpot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F7AE803591910257979AC31 /* Pods_iFollowSpotTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,21 +86,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22CB99261513ABF2E00174BD /* Pods_iFollowSpotUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24C1B62F7F9F7C703C871D26 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				240EA84D3D3D9295BAE46156 /* Pods_iFollowSpot.framework */,
+				4D44B564F21AEDB520CEDF0D /* Pods_iFollowSpotTests.framework */,
+				F6A1310A2FC42C814A3FE62C /* Pods_iFollowSpotUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		996C9DBDE3CD67F86C4A5C7A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E4F6E66A572B5E3FA6B5DA35 /* Pods-iFollowSpot.debug.xcconfig */,
+				2AEFFD65FFA2F287B90CCDF5 /* Pods-iFollowSpot.release.xcconfig */,
+				1DDB0AA34D94C015ECFF7644 /* Pods-iFollowSpotTests.debug.xcconfig */,
+				8B6147A253D66672EBCF69A7 /* Pods-iFollowSpotTests.release.xcconfig */,
+				1756832277EA9D533E23F6BC /* Pods-iFollowSpotUITests.debug.xcconfig */,
+				8F5803312DD4FCAD4CC68867 /* Pods-iFollowSpotUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DD2F6F5A20B1915F00972132 = {
 			isa = PBXGroup;
 			children = (
-				DD4F74E220BB1C69005EEF4E /* Podfile.txt */,
+				DD3FFA1420BB1F810036E2AA /* Podfile */,
 				DD2F6F9420B19B3500972132 /* Default-568h@2x.png */,
 				DD2F6F6520B1915F00972132 /* iFollowSpot */,
 				DD2F6F7A20B1916100972132 /* iFollowSpotTests */,
 				DD2F6F8520B1916100972132 /* iFollowSpotUITests */,
 				DD2F6F6420B1915F00972132 /* Products */,
+				996C9DBDE3CD67F86C4A5C7A /* Pods */,
+				24C1B62F7F9F7C703C871D26 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,9 +178,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD2F6F8B20B1916100972132 /* Build configuration list for PBXNativeTarget "iFollowSpot" */;
 			buildPhases = (
+				7A06B5C55413602D304FD372 /* [CP] Check Pods Manifest.lock */,
 				DD2F6F5F20B1915F00972132 /* Sources */,
 				DD2F6F6020B1915F00972132 /* Frameworks */,
 				DD2F6F6120B1915F00972132 /* Resources */,
+				68E6FCA3A17C9E611366AAD8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -155,6 +197,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD2F6F8E20B1916100972132 /* Build configuration list for PBXNativeTarget "iFollowSpotTests" */;
 			buildPhases = (
+				E3CEACB0DE2706F2F1E8F8AB /* [CP] Check Pods Manifest.lock */,
 				DD2F6F7320B1916100972132 /* Sources */,
 				DD2F6F7420B1916100972132 /* Frameworks */,
 				DD2F6F7520B1916100972132 /* Resources */,
@@ -173,6 +216,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD2F6F9120B1916100972132 /* Build configuration list for PBXNativeTarget "iFollowSpotUITests" */;
 			buildPhases = (
+				52B3529A15A3151CBEADD1A9 /* [CP] Check Pods Manifest.lock */,
 				DD2F6F7E20B1916100972132 /* Sources */,
 				DD2F6F7F20B1916100972132 /* Frameworks */,
 				DD2F6F8020B1916100972132 /* Resources */,
@@ -235,11 +279,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD3FFA1520BB1F810036E2AA /* Podfile in Resources */,
 				DD2F6F7120B1916000972132 /* LaunchScreen.storyboard in Resources */,
 				DD2F6F9520B19B3500972132 /* Default-568h@2x.png in Resources */,
 				DD2F6F6E20B1916000972132 /* Assets.xcassets in Resources */,
 				DD2F6F6C20B1915F00972132 /* Main.storyboard in Resources */,
-				DD4F74E320BB1C69005EEF4E /* Podfile.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +302,81 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		52B3529A15A3151CBEADD1A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iFollowSpotUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68E6FCA3A17C9E611366AAD8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iFollowSpot/Pods-iFollowSpot-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Moscapsule/Moscapsule.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moscapsule.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iFollowSpot/Pods-iFollowSpot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A06B5C55413602D304FD372 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iFollowSpot-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3CEACB0DE2706F2F1E8F8AB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iFollowSpotTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DD2F6F5F20B1915F00972132 /* Sources */ = {
@@ -436,6 +555,7 @@
 		};
 		DD2F6F8C20B1916100972132 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4F6E66A572B5E3FA6B5DA35 /* Pods-iFollowSpot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -453,6 +573,7 @@
 		};
 		DD2F6F8D20B1916100972132 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AEFFD65FFA2F287B90CCDF5 /* Pods-iFollowSpot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -470,6 +591,7 @@
 		};
 		DD2F6F8F20B1916100972132 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1DDB0AA34D94C015ECFF7644 /* Pods-iFollowSpotTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -490,6 +612,7 @@
 		};
 		DD2F6F9020B1916100972132 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B6147A253D66672EBCF69A7 /* Pods-iFollowSpotTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -510,6 +633,7 @@
 		};
 		DD2F6F9220B1916100972132 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1756832277EA9D533E23F6BC /* Pods-iFollowSpotUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -529,6 +653,7 @@
 		};
 		DD2F6F9320B1916100972132 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F5803312DD4FCAD4CC68867 /* Pods-iFollowSpotUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
