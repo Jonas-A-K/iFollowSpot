@@ -32,6 +32,20 @@
 			remoteGlobalIDString = DD2F6F6220B1915F00972132;
 			remoteInfo = iFollowSpot;
 		};
+		DD4F74DE20BB1A58005EEF4E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD4F74D920BB1A58005EEF4E /* Moscapsule.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09CF6B131A21F78700A97383;
+			remoteInfo = Moscapsule;
+		};
+		DD4F74E020BB1A58005EEF4E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD4F74D920BB1A58005EEF4E /* Moscapsule.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09CF6B1E1A21F78700A97383;
+			remoteInfo = MoscapsuleTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +63,7 @@
 		DD2F6F8620B1916100972132 /* iFollowSpotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iFollowSpotUITests.swift; sourceTree = "<group>"; };
 		DD2F6F8820B1916100972132 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD2F6F9420B19B3500972132 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		DD4F74D920BB1A58005EEF4E /* Moscapsule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Moscapsule.xcodeproj; path = ../Moscapsule/Moscapsule.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +94,7 @@
 		DD2F6F5A20B1915F00972132 = {
 			isa = PBXGroup;
 			children = (
+				DD4F74D920BB1A58005EEF4E /* Moscapsule.xcodeproj */,
 				DD2F6F9420B19B3500972132 /* Default-568h@2x.png */,
 				DD2F6F6520B1915F00972132 /* iFollowSpot */,
 				DD2F6F7A20B1916100972132 /* iFollowSpotTests */,
@@ -126,6 +142,15 @@
 				DD2F6F8820B1916100972132 /* Info.plist */,
 			);
 			path = iFollowSpotUITests;
+			sourceTree = "<group>";
+		};
+		DD4F74DA20BB1A58005EEF4E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DD4F74DF20BB1A58005EEF4E /* Moscapsule.framework */,
+				DD4F74E120BB1A58005EEF4E /* MoscapsuleTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +243,12 @@
 			mainGroup = DD2F6F5A20B1915F00972132;
 			productRefGroup = DD2F6F6420B1915F00972132 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = DD4F74DA20BB1A58005EEF4E /* Products */;
+					ProjectRef = DD4F74D920BB1A58005EEF4E /* Moscapsule.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				DD2F6F6220B1915F00972132 /* iFollowSpot */,
@@ -226,6 +257,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		DD4F74DF20BB1A58005EEF4E /* Moscapsule.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Moscapsule.framework;
+			remoteRef = DD4F74DE20BB1A58005EEF4E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DD4F74E120BB1A58005EEF4E /* MoscapsuleTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MoscapsuleTests.xctest;
+			remoteRef = DD4F74E020BB1A58005EEF4E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DD2F6F6120B1915F00972132 /* Resources */ = {
