@@ -18,6 +18,7 @@
 		DD2F6F8720B1916100972132 /* iFollowSpotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2F6F8620B1916100972132 /* iFollowSpotUITests.swift */; };
 		DD2F6F9520B19B3500972132 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2F6F9420B19B3500972132 /* Default-568h@2x.png */; };
 		DD3FFA1520BB1F810036E2AA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = DD3FFA1420BB1F810036E2AA /* Podfile */; };
+		DDC893C220BB6E50004C8DCC /* MQTTHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC893C120BB6E50004C8DCC /* MQTTHandler.swift */; };
 		FBB40F43C0FD21BF4C365AD0 /* Pods_iFollowSpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240EA84D3D3D9295BAE46156 /* Pods_iFollowSpot.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		DD2F6F8820B1916100972132 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD2F6F9420B19B3500972132 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DD3FFA1420BB1F810036E2AA /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		DDC893C120BB6E50004C8DCC /* MQTTHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTHandler.swift; sourceTree = "<group>"; };
 		E4F6E66A572B5E3FA6B5DA35 /* Pods-iFollowSpot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iFollowSpot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iFollowSpot/Pods-iFollowSpot.debug.xcconfig"; sourceTree = "<group>"; };
 		F6A1310A2FC42C814A3FE62C /* Pods_iFollowSpotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iFollowSpotUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -149,6 +151,7 @@
 				DD2F6F6D20B1916000972132 /* Assets.xcassets */,
 				DD2F6F6F20B1916000972132 /* LaunchScreen.storyboard */,
 				DD2F6F7220B1916000972132 /* Info.plist */,
+				DDC893C120BB6E50004C8DCC /* MQTTHandler.swift */,
 			);
 			path = iFollowSpot;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			files = (
 				DD2F6F6920B1915F00972132 /* ViewController.swift in Sources */,
 				DD2F6F6720B1915F00972132 /* AppDelegate.swift in Sources */,
+				DDC893C220BB6E50004C8DCC /* MQTTHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -40,5 +40,10 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func mqttConnect(_ sender: Any) {
+        NSLog("Trying to connect…")
+        MQTTHandler().testConnectToMQTTServer()
+    }
+    
 }
 
