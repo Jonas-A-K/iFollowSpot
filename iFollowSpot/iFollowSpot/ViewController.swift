@@ -7,14 +7,44 @@
 //
 
 import UIKit
-import AVKit
 import AVFoundation
+import AVKit
 
 class ViewController: UIViewController {
+    
+    var playerController = AVPlayerViewController()
+    var player:AVPlayer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        /*
+        let userCredential = URLCredential(user: "root",
+                                           password: "1",
+                                           persistence: .permanent)
+        
+        let protectionSpace = URLProtectionSpace.init(host: "192.168.1.1",
+                                                      port: 8081,
+                                                      protocol: "http",
+                                                      realm: nil,
+                                                      authenticationMethod: nil)
+        
+        var credential: URLCredential? = URLCredentialStorage.shared.defaultCredential(for: protectionSpace)
+        
+        URLCredentialStorage.shared.setDefaultCredential(userCredential, for: protectionSpace)
+         https://devimages.apple.com.edgekey.net/samplecode/avfoundationMedia/AVFoundationQueuePlayer_HLS2/master.m3u8
+        */
+        
+        let testURL = Bundle.main.path(forResource: "Video", ofType: "mp4")
+        
+        guard let url = URL(string: testURL!) else {
+            return
+        }
+            
+        self.player = AVPlayer(url: url)
+        self.playerController.player = self.player
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,21 +53,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func playVideo(_ sender: AnyObject) {
-        guard let url = URL(string: "https://devimages.apple.com.edgekey.net/samplecode/avfoundationMedia/AVFoundationQueuePlayer_HLS2/master.m3u8") else {
-            return
-        }
         
-        // Create an AVPlayer, passing it the HTTP Live Streaming URL.
-        let player = AVPlayer(url: url)
+        self.present(self.playerController, animated: true, completion: {
+            
+            self.playerController.player?.play()
+            
+        })
         
-        // Create a new AVPlayerViewController and pass it a reference to the player.
-        let controller = AVPlayerViewController()
-        controller.player = player
-        
-        // Modally present the player and call the player's play() method when complete.
-        present(controller, animated: true) {
-            player.play()
-        }
     }
     
     @IBAction func mqttConnect(_ sender: Any) {

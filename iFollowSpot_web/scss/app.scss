@@ -1,5 +1,8 @@
 // 1. Your custom variables and variable overwrites.
-$global-link-color: #DA7D02;
+$base-heading-font-weight: 200;
+
+$form-horizontal-label-width: 100px;
+$form-horizontal-controls-margin-left: 115px;
 
 // 2. Import default variables and available mixins.
 @import "../bower_components/uikit/src/scss/variables-theme.scss";

@@ -19,6 +19,9 @@
 		DD2F6F9520B19B3500972132 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2F6F9420B19B3500972132 /* Default-568h@2x.png */; };
 		DD3FFA1520BB1F810036E2AA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = DD3FFA1420BB1F810036E2AA /* Podfile */; };
 		DDC893C220BB6E50004C8DCC /* MQTTHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC893C120BB6E50004C8DCC /* MQTTHandler.swift */; };
+		DDF22C3F20CAD393007B68A9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF22C3E20CAD393007B68A9 /* AVFoundation.framework */; };
+		DDF22C4120CAD398007B68A9 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF22C4020CAD398007B68A9 /* AVKit.framework */; };
+		DDF22C4320CAD662007B68A9 /* Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DDF22C4220CAD662007B68A9 /* Video.mp4 */; };
 		FBB40F43C0FD21BF4C365AD0 /* Pods_iFollowSpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240EA84D3D3D9295BAE46156 /* Pods_iFollowSpot.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,8 +64,11 @@
 		DD2F6F8620B1916100972132 /* iFollowSpotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iFollowSpotUITests.swift; sourceTree = "<group>"; };
 		DD2F6F8820B1916100972132 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD2F6F9420B19B3500972132 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		DD3FFA1420BB1F810036E2AA /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		DD3FFA1420BB1F810036E2AA /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DDC893C120BB6E50004C8DCC /* MQTTHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTHandler.swift; sourceTree = "<group>"; };
+		DDF22C3E20CAD393007B68A9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DDF22C4020CAD398007B68A9 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		DDF22C4220CAD662007B68A9 /* Video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Video.mp4; sourceTree = "<group>"; };
 		E4F6E66A572B5E3FA6B5DA35 /* Pods-iFollowSpot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iFollowSpot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iFollowSpot/Pods-iFollowSpot.debug.xcconfig"; sourceTree = "<group>"; };
 		F6A1310A2FC42C814A3FE62C /* Pods_iFollowSpotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iFollowSpotUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -72,6 +78,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDF22C3F20CAD393007B68A9 /* AVFoundation.framework in Frameworks */,
+				DDF22C4120CAD398007B68A9 /* AVKit.framework in Frameworks */,
 				FBB40F43C0FD21BF4C365AD0 /* Pods_iFollowSpot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,6 +106,8 @@
 		24C1B62F7F9F7C703C871D26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DDF22C4020CAD398007B68A9 /* AVKit.framework */,
+				DDF22C3E20CAD393007B68A9 /* AVFoundation.framework */,
 				240EA84D3D3D9295BAE46156 /* Pods_iFollowSpot.framework */,
 				4D44B564F21AEDB520CEDF0D /* Pods_iFollowSpotTests.framework */,
 				F6A1310A2FC42C814A3FE62C /* Pods_iFollowSpotUITests.framework */,
@@ -121,6 +131,7 @@
 		DD2F6F5A20B1915F00972132 = {
 			isa = PBXGroup;
 			children = (
+				DDF22C4220CAD662007B68A9 /* Video.mp4 */,
 				DD3FFA1420BB1F810036E2AA /* Podfile */,
 				DD2F6F9420B19B3500972132 /* Default-568h@2x.png */,
 				DD2F6F6520B1915F00972132 /* iFollowSpot */,
@@ -286,6 +297,7 @@
 				DD2F6F7120B1916000972132 /* LaunchScreen.storyboard in Resources */,
 				DD2F6F9520B19B3500972132 /* Default-568h@2x.png in Resources */,
 				DD2F6F6E20B1916000972132 /* Assets.xcassets in Resources */,
+				DDF22C4320CAD662007B68A9 /* Video.mp4 in Resources */,
 				DD2F6F6C20B1915F00972132 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,6 +578,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 24H3JH9555;
 				INFOPLIST_FILE = iFollowSpot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -587,6 +600,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 24H3JH9555;
 				INFOPLIST_FILE = iFollowSpot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

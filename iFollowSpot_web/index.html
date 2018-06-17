@@ -6,9 +6,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/app.css" />
     <script src="bower_components/uikit/dist/js/uikit.min.js"></script>
-    <script src="bower_components/uikit/dist/js/uikit.min.js"></script>
+    <script src="bower_components/uikit/dist/js/uikit-icons.min.js"></script>
+    <script src="js/mqtt-min.js"></script>
   </head>
   <body>
-    <h1>Hello World</h1>
+
+    <div class="uk-offcanvas-content">
+
+      <div class="uk-container-small uk-align-center">
+        <div class="uk-flex uk-flex-between uk-padding-small">
+          <button class="uk-button uk-button-link" onclick="checkMqttStatus()"><span id="mqtt-status" uk-icon="clock"></span></button>
+          <h1 class="uk-text-lead uk-text-primary uk-margin-remove">iFollowSpot</h1>
+          <button class="uk-button uk-button-link" uk-toggle="target: #settings" type="button"><span uk-icon="cog"></span></button>
+        </div>
+        <div class="uk-flex uk-flex-around">
+          <div class="">
+            PAN: <span id="pan"></span>
+          </div>
+          <div class="">
+            TILT: <span id="tilt"></span>
+          </div>
+        </div>
+        <img class="uk-width-1-1" src="http://via.placeholder.com/640x480" width="640" height="480">
+        <div class="uk-flex uk-flex-around uk-padding-small">
+          <div>
+            <button class="uk-button uk-button-link" id="left"><span uk-icon="icon: chevron-left; ratio: 3"></span></button>
+            <button class="uk-button uk-button-link" id="right"><span uk-icon="icon: chevron-right; ratio: 3"></span></button>
+          </div>
+          <div>
+            <button class="uk-button uk-button-link" id="up"><span uk-icon="icon: chevron-up; ratio: 3"></span></button><br>
+            <button class="uk-button uk-button-link" id="down"><span uk-icon="icon: chevron-down; ratio: 3"></span></button>
+          </div>
+        </div>
+        <div class="uk-width-1-1 uk-padding">
+          <table class="uk-table">
+            <caption>DMX Status</caption>
+            <thead>
+              <tr>
+                <th>Axis</th>
+                <th>Channel</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Pan</td>
+                <td id="pan-ch-status"></td>
+                <td id="pan-dmx-value"></td>
+              </tr>
+              <tr>
+                <td>Tilt</td>
+                <td id="tilt-ch-status"></td>
+                <td id="tilt-dmx-value"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="settings" uk-offcanvas="overlay: true">
+        <div class="uk-offcanvas-bar">
+
+          <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+          <form class="uk-form-horizontal">
+
+            <h3>DMX Channels</h3>
+
+            <div class="uk-margin">
+              <label class="uk-form-label" for="pan-channel">Pan</label>
+              <div class="uk-form-controls">
+                <input required class="uk-input" id="pan-channel" type="number" min="1" max="512">
+              </div>
+            </div>
+
+            <div class="uk-margin">
+              <label class="uk-form-label" for="tilt-channel">Tilt</label>
+              <div class="uk-form-controls">
+                <input required class="uk-input" id="tilt-channel" type="number" min="1" max="512">
+              </div>
+            </div>
+
+            <h3>Rotation Origin</h3>
+
+            <div class="uk-margin">
+              <label class="uk-form-label" for="pan-center">Pan [°]</label>
+              <div class="uk-form-controls">
+                <input required class="uk-input" id="pan-center" type="number">
+              </div>
+            </div>
+
+            <div class="uk-margin">
+              <label class="uk-form-label" for="tilt-center">Tilt [°]</label>
+              <div class="uk-form-controls">
+                <input required class="uk-input" id="tilt-center" type="number">
+              </div>
+            </div>
+
+            <h3>Rotation Limits</h3>
+
+            <div class="uk-margin">
+              <label class="uk-form-label" for="pan-max">Max Pan [°]</label>
+              <div class="uk-form-controls">
+                <input required class="uk-input" id="pan-max" type="number">
+              </div>
+            </div>
+
+            <div class="uk-margin">
+              <label class="uk-form-label" for="pan-min">Min Pan [°]</label>
+              <div class="uk-form-controls">
+                <input required class="uk-input" id="pan-min" type="number">
+              </div>
+            </div>
+
+            <div class="uk-margin">
+              <label class="uk-form-label" for="tilt-max">Max Tilt [°]</label>
+              <div class="uk-form-controls">
+                <input required class="uk-input" id="tilt-max" type="number">
+              </div>
+            </div>
+
+            <div class="uk-margin">
+              <label class="uk-form-label" for="tilt-min">Min Tilt [°]</label>
+              <div class="uk-form-controls">
+                <input required class="uk-input" id="tilt-min" type="number">
+              </div>
+            </div>
+
+          </form>
+
+          <hr>
+
+          <button class="uk-button uk-width-1-1 uk-margin-small-bottom uk-button-primary" id="save-settings"><span uk-icon="download">Save </button>
+          <button class="uk-button uk-width-1-1 uk-margin-small-bottom uk-button-warning" id="restore-settings"><span uk-icon="history">Restore </button>
+          <button class="uk-button uk-width-1-1 uk-button-danger" id="reset-settings"><span uk-icon="trash">Reset </button>
+
+        </div>
+      </div>
+
+    </div>
+
+    <script src="js/app.js"></script>
+
   </body>
 </html>
