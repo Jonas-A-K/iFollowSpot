@@ -2,7 +2,7 @@
 <html lang="de" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>iFollowSot</title>
+    <title>iFollowSpot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/app.css" />
     <script src="bower_components/uikit/dist/js/uikit.min.js"></script>
@@ -11,12 +11,21 @@
   </head>
   <body>
 
+    <div id="app-info-modal" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body">
+        <h2 class="uk-modal-title">iFollowSpot</h2>
+        <p>Created with <span uk-icon="heart"></span> by Laura Saupe, Lasse Schinckel und Jonas Kern at
+        Hamburg University of Applied Sciences Germany.</p>
+        <p>Published under MIT License</p>
+      </div>
+    </div>
+
     <div class="uk-offcanvas-content">
 
       <div class="uk-container-small uk-align-center">
         <div class="uk-flex uk-flex-between uk-padding-small">
           <button class="uk-button uk-button-link" onclick="checkMqttStatus()"><span id="mqtt-status" uk-icon="clock"></span></button>
-          <h1 class="uk-text-lead uk-text-primary uk-margin-remove">iFollowSpot</h1>
+          <a href="#app-info-modal" uk-toggle><h1 class="uk-text-lead uk-text-primary uk-margin-remove">iFollowSpot</h1></a>
           <button class="uk-button uk-button-link" uk-toggle="target: #settings" type="button"><span uk-icon="cog"></span></button>
         </div>
         <div class="uk-flex uk-flex-around">
@@ -27,17 +36,24 @@
             TILT: <span id="tilt"></span>
           </div>
         </div>
+
         <img class="uk-width-1-1" src="http://via.placeholder.com/640x480" width="640" height="480">
+
+        <div class="uk-flex uk-flex-around uk-padding-small">
+          <input class="uk-range" id="dimmer-input" type="range" min="0" max="255" step="1">
+          <span id="dimmer-output"></span>
+        </div>
         <div class="uk-flex uk-flex-around uk-padding-small">
           <div>
-            <button class="uk-button uk-button-link" id="left"><span uk-icon="icon: chevron-left; ratio: 3"></span></button>
-            <button class="uk-button uk-button-link" id="right"><span uk-icon="icon: chevron-right; ratio: 3"></span></button>
+            <button class="uk-button uk-button-link" id="left" type="button"><span uk-icon="icon: chevron-left; ratio: 3"></span></button>
+            <button class="uk-button uk-button-link" id="right" type="button"><span uk-icon="icon: chevron-right; ratio: 3"></span></button>
           </div>
           <div>
-            <button class="uk-button uk-button-link" id="up"><span uk-icon="icon: chevron-up; ratio: 3"></span></button><br>
-            <button class="uk-button uk-button-link" id="down"><span uk-icon="icon: chevron-down; ratio: 3"></span></button>
+            <button class="uk-button uk-button-link" id="up" type="button"><span uk-icon="icon: chevron-up; ratio: 3"></span></button><br>
+            <button class="uk-button uk-button-link" id="down" type="button"><span uk-icon="icon: chevron-down; ratio: 3"></span></button>
           </div>
         </div>
+
         <div class="uk-width-1-1 uk-padding">
           <table class="uk-table">
             <caption>DMX Status</caption>
@@ -49,6 +65,11 @@
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <td>Dimmer</td>
+                <td id="dimmer-ch-status"></td>
+                <td id="dimmer-dmx-value"></td>
+              </tr>
               <tr>
                 <td>Pan</td>
                 <td id="pan-ch-status"></td>
@@ -72,6 +93,13 @@
           <form class="uk-form-horizontal">
 
             <h3>DMX Channels</h3>
+
+            <div class="uk-margin">
+              <label class="uk-form-label" for="pan-channel">Dimmer</label>
+              <div class="uk-form-controls">
+                <input required class="uk-input" id="dimmer-channel" type="number" min="1" max="512">
+              </div>
+            </div>
 
             <div class="uk-margin">
               <label class="uk-form-label" for="pan-channel">Pan</label>

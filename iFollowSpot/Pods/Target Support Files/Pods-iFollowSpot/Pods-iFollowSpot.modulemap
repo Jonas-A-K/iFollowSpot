@@ -1,6 +1,0 @@
-framework module Pods_iFollowSpot {
-  umbrella header "Pods-iFollowSpot-umbrella.h"
-
-  export *
-  module * { export * }
-}
