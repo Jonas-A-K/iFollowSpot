@@ -1,5 +1,15 @@
-# iFollowSpot
-## ITS-Projekt SoSe 2018
+# iFollowSpot – ITS-Projekt SoSe 2018
+## Inhalt
+1. Einleitung
+2. Fernbildübertragung (Laura Saupe)
+3. WLAN Access-Point (Laura Saupe)
+4. MQTT-Broker und -Client auf Raspberry Pi (Lasse Schinckel)
+5. RF24-Schnittstelle zum zweiten Raspberry Pi (Lasse Schinckel)
+6. MQTT-Client über Websockets (Jonas Kern)
+7. Videofeed in der Web-Applikation (Jonas Kern)
+8. Frontend der Web-Applikation (Jonas Kern)
+9. Fazit
+## 1. Einleitung
 ### Teilnehmer
 * Laura Saupe (2219616)
 * Lasse Schinckel (2219669)
@@ -19,6 +29,6 @@ Das Signal wird hierbei über Netzwerk vom Mobilgerät an den Raspberry Pi über
 * Mobilgerät (Tablet, Smartphone)
 * Moving-Head-Scheinwerfer
 ### Arbeitsbereiche
-* Fernbildübertragung (Kamerabild im Netzwerk zur Verfügung stellen)
-* Moving-Head-Steuerung (Umwandlung von Netzwerkübertragung zu DMX-Signalen)
-* Applikations-Entwicklung (Entwicklung der App mit Livebildanzeige und Steuerelementen)
+* Laura Saupe: Fernbildübertragung (Kamerabild im Netzwerk zur Verfügung stellen)
+* Jonas Kern: Applikations-Entwicklung (Entwicklung der App mit Livebildanzeige und Steuerelementen)
+* Lasse Schinckel: Moving-Head-Steuerung (Umwandlung von Netzwerkübertragung zu DMX-Signalen)
