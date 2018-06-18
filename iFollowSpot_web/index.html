@@ -13,8 +13,9 @@
 
     <div id="app-info-modal" uk-modal>
       <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
         <h2 class="uk-modal-title">iFollowSpot</h2>
-        <p>Created with <span uk-icon="heart"></span> by Laura Saupe, Lasse Schinckel und Jonas Kern at
+        <p>Created with <span uk-icon="heart"></span> by Laura Saupe, Lasse Schinckel and Jonas Kern at
         Hamburg University of Applied Sciences Germany.</p>
         <p>Published under MIT License</p>
       </div>
@@ -23,40 +24,45 @@
     <div class="uk-offcanvas-content">
 
       <div class="uk-container-small uk-align-center">
+        
         <div class="uk-flex uk-flex-between uk-padding-small">
           <button class="uk-button uk-button-link" onclick="checkMqttStatus()"><span id="mqtt-status" uk-icon="clock"></span></button>
           <a href="#app-info-modal" uk-toggle><h1 class="uk-text-lead uk-text-primary uk-margin-remove">iFollowSpot</h1></a>
           <button class="uk-button uk-button-link" uk-toggle="target: #settings" type="button"><span uk-icon="cog"></span></button>
         </div>
-        <div class="uk-flex uk-flex-around">
-          <div class="">
-            PAN: <span id="pan"></span>
+
+        <div class="uk-flex uk-flex-around uk-padding-small uk-padding-remove-top uk-text-small">
+          <div class="uk-flex-1 uk-text-center">
+            <span>DIMMER: </span><span id="dimmer-output"></span>
           </div>
-          <div class="">
-            TILT: <span id="tilt"></span>
+          <div class="uk-flex-1 uk-text-center">
+            <span>PAN: </span><span id="pan"></span>
+          </div>
+          <div class="uk-flex-1 uk-text-center">
+            <span>TILT: </span><span id="tilt"></span>
           </div>
         </div>
 
         <img class="uk-width-1-1" src="http://via.placeholder.com/640x480" width="640" height="480">
 
-        <div class="uk-flex uk-flex-around uk-padding-small">
-          <input class="uk-range" id="dimmer-input" type="range" min="0" max="255" step="1">
-          <span id="dimmer-output"></span>
-        </div>
-        <div class="uk-flex uk-flex-around uk-padding-small">
-          <div>
-            <button class="uk-button uk-button-link" id="left" type="button"><span uk-icon="icon: chevron-left; ratio: 3"></span></button>
-            <button class="uk-button uk-button-link" id="right" type="button"><span uk-icon="icon: chevron-right; ratio: 3"></span></button>
+        <div class="uk-grid uk-grid-collapse uk-flex-middle uk-padding-small" uk-grid>
+          <div class="uk-width-1-2">
+            <input class="uk-range fs-pan" id="pan-control" type="range" step="1">
           </div>
-          <div>
-            <button class="uk-button uk-button-link" id="up" type="button"><span uk-icon="icon: chevron-up; ratio: 3"></span></button><br>
-            <button class="uk-button uk-button-link" id="down" type="button"><span uk-icon="icon: chevron-down; ratio: 3"></span></button>
+          <div class="uk-width-1-2 fs-tilt-wrapper">
+            <input class="uk-range fs-tilt" id="tilt-control" type="range" step="1">
           </div>
         </div>
 
-        <div class="uk-width-1-1 uk-padding">
-          <table class="uk-table">
-            <caption>DMX Status</caption>
+        <div class="uk-flex uk-flex-around uk-padding-small">
+          <div class="uk-margin-right">
+            <span>Dimmer:</span>
+          </div>
+          <input class="uk-range" id="dimmer-input" type="range" min="0" max="255" step="1">
+        </div>
+
+        <div class="uk-width-1-1">
+          <table class="uk-table uk-table-striped">
             <thead>
               <tr>
                 <th>Axis</th>

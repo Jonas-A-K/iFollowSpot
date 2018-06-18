@@ -13,3 +13,22 @@ $form-horizontal-controls-margin-left: 115px;
 
 // 4. Import UIkit.
 @import "../bower_components/uikit/src/scss/uikit-theme.scss";
+
+.fs-pan {
+  width: 150px;
+}
+
+.fs-tilt-wrapper {
+  height: 150px;
+}
+
+.fs-tilt {
+  width: 150px;
+  transform-origin: 75px 75px;
+  transform: rotate(-90deg);
+}
+
+#dimmer-output, #pan, #tilt {
+  display: inline-block;
+  width: 2em;
+}

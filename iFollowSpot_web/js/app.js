@@ -54,16 +54,10 @@ var dimmer      = dimmerStart;
 var pan         = degreeToDMX(panCenter);
 var tilt        = degreeToDMX(tiltCenter);
 
-// Interval and timer for mousedown event
-var timer;
-var interval = 100;
-
 // UI Controls: On screen controls
 var dimmerControl = document.getElementById("dimmer-input");
-var leftControl   = document.getElementById("left");
-var rightControl  = document.getElementById("right");
-var upControl     = document.getElementById("up");
-var downControl   = document.getElementById("down");
+var panControl    = document.getElementById("pan-control");
+var tiltControl   = document.getElementById("tilt-control");
 
 // UI Controls: Settings
 var dimmerDMXControl  = document.getElementById("dimmer-channel");
@@ -132,7 +126,7 @@ function displaySettings() {
 function displayDMXStatus() {
 
   // Display control values (Percentage/Degree)
-  document.getElementById("dimmer-output").innerHTML = Math.round((((dimmer * 65536) / 256) * 100) / 65536);
+  document.getElementById("dimmer-output").innerHTML = Math.round((((dimmer * 65536) / 256) * 100) / 65536) + "%";
   document.getElementById("pan").innerHTML = panDeg + "°";
   document.getElementById("tilt").innerHTML = tiltDeg + "°";
 
@@ -148,11 +142,16 @@ function displayDMXStatus() {
 }
 
 // Set max/min on center inputs
-function setMaxMinForCenter() {
+function setMaxMin() {
   document.getElementById("pan-center").max = panMax;
   document.getElementById("pan-center").min = panMin;
+  document.getElementById("pan-control").max = degreeToDMX(panMax);
+  document.getElementById("pan-control").min = degreeToDMX(panMin);
+
   document.getElementById("tilt-center").max = tiltMax;
   document.getElementById("tilt-center").min = tiltMin;
+  document.getElementById("tilt-control").max = degreeToDMX(tiltMax);
+  document.getElementById("tilt-control").min = degreeToDMX(tiltMin);
 }
 
 // Check if the client is connected to the MQTT server
@@ -207,29 +206,14 @@ function restoreSettings(notification) {
     UIkit.notification("This Browser doesn't support Web Storage. Settings can't be restored.", {status: 'danger'});
   }
 
-  setMaxMinForCenter();
+  setMaxMin();
   displaySettings();
   displayDMXStatus();
 }
 
 
 
-// ========== INITILISATION ON PAGE LOAD ==========
-
-// Load settings from local storage or use default values, display values in settings menu
-document.addEventListener('DOMContentLoaded', function() {
-  restoreSettings();
-  setMaxMinForCenter();
-  displaySettings();
-  displayDMXStatus();
-});
-
-// Subscribe to MQTT topic (see MQTT Configuration)
-client.subscribe(topic);
-
-
-
-// ========== INITILISATION ON PAGE LOAD ==========
+// ========== HANDLE MQTT EVENTS ==========
 
 // Read MQTT Messages and set control values
 client.on("message", function (topic, payload) {
@@ -258,10 +242,6 @@ client.on("message", function (topic, payload) {
   displayDMXStatus()
 
 })
-
-
-
-// ========== HANDLE MQTT EVENTS ==========
 
 client.on("connect", function (connack) {
   UIkit.notification("Successfully connected to iFollowSpot device", {status: 'success'});
@@ -296,32 +276,22 @@ dimmerControl.addEventListener("input", function () {
   publishCommand(dmxDimmerCh, this.value);
 });
 
-leftControl.addEventListener("mousedown", function () {
-   timer = setInterval(function () {
-        publishCommand(dmxPanCh, pan - 1);
-   }, interval);
+panControl.addEventListener("input", function () {
+  if (this.value > degreeToDMX(panMin) && this.value < degreeToDMX(panMax)) {
+    publishCommand(dmxPanCh, this.value);
+    document.getElementById("pan").setAttribute("class", "");
+  } else {
+    document.getElementById("pan").setAttribute("class", "uk-text-danger");
+  }
 });
 
-rightControl.addEventListener("mousedown", function () {
-   timer = setInterval(function () {
-        publishCommand(dmxPanCh, pan + 1);
-   }, interval);
-});
-
-upControl.addEventListener("mousedown", function () {
-   timer = setInterval(function () {
-        publishCommand(dmxTiltCh, tilt + 1);
-   }, interval);
-});
-
-downControl.addEventListener("mousedown", function () {
-   timer = setInterval(function () {
-        publishCommand(dmxTiltCh, tilt - 1);
-   }, interval);
-});
-
-document.addEventListener("mouseup", function() {
-  if (timer) clearInterval(timer)
+tiltControl.addEventListener("input", function () {
+  if (this.value > degreeToDMX(tiltMin) && this.value < degreeToDMX(tiltMax)) {
+    publishCommand(dmxTiltCh, this.value);
+    document.getElementById("tilt").setAttribute("class", "");
+  } else {
+    document.getElementById("tilt").setAttribute("class", "uk-text-danger");
+  }
 });
 
 
@@ -356,39 +326,40 @@ tiltCenterControl.addEventListener("change", function() {
 panMaxControl.addEventListener("change", function() {
   panMax = this.value;
   publishCommand(dmxPanCh, degreeToDMX(panMax));
-  setMaxMinForCenter();
+  setMaxMin();
 });
 
 panMinControl.addEventListener("change", function() {
   panMin = this.value;
   publishCommand(dmxPanCh, degreeToDMX(panMin));
-  setMaxMinForCenter();
+  setMaxMin();
 });
 
 tiltMaxControl.addEventListener("change", function() {
   tiltMax = this.value;
   publishCommand(dmxTiltCh, degreeToDMX(tiltMax));
-  setMaxMinForCenter();
+  setMaxMin();
 });
 
 tiltMinControl.addEventListener("change", function() {
   tiltMin = this.value;
   publishCommand(dmxTiltCh, degreeToDMX(tiltMin));
-  setMaxMinForCenter();
+  setMaxMin();
 });
 
 // Save settings
 saveControl.addEventListener("click", function() {
 
   settings = {
-    "dmxPanCh": dmxPanCh,
-    "dmxTiltCh": dmxTiltCh,
-    "panCenter": panCenter,
-    "tiltCenter": tiltCenter,
-    "panMax": panMax,
-    "panMin": panMin,
-    "tiltMax": tiltMax,
-    "tiltMin": tiltMin
+    "dmxDimmerCh" : dmxDimmerCh,
+    "dmxPanCh"    : dmxPanCh,
+    "dmxTiltCh"   : dmxTiltCh,
+    "panCenter"   : panCenter,
+    "tiltCenter"  : tiltCenter,
+    "panMax"      : panMax,
+    "panMin"      : panMin,
+    "tiltMax"     : tiltMax,
+    "tiltMin"     : tiltMin
   };
 
   settingsString = JSON.stringify(settings);
@@ -399,6 +370,8 @@ saveControl.addEventListener("click", function() {
   } else {
     UIkit.notification("This browser doesn't support web storage. Settings can't be stored locally.", {status: 'danger'});
   }
+
+  restoreSettings();
 
 });
 
@@ -421,5 +394,20 @@ resetControl.addEventListener("click", function() {
 
 // Restore settings
 restoreControl.addEventListener("click", function() {
-  restoreSettings();
+  restoreSettings(true);
 });
+
+
+
+// ========== INITILISATION ON PAGE LOAD ==========
+
+// Load settings from local storage or use default values, display values in settings menu
+document.addEventListener('DOMContentLoaded', function() {
+  restoreSettings(true);
+  setMaxMin();
+  displaySettings();
+  displayDMXStatus();
+});
+
+// Subscribe to MQTT topic (see MQTT Configuration)
+client.subscribe(topic);
