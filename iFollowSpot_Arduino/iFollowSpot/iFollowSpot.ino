@@ -6,7 +6,7 @@
  
 #include <SPI.h>
 #include <ArduinoJson.h>
-//#include <Conceptinetics.h>
+#include <Conceptinetics.h>
 #include "nRF24L01.h"
 #include "RF24.h"
 
@@ -21,22 +21,17 @@ const uint64_t pipes[2] = { 0xF0F0F0F0E1LL, 0xF0F0F0F0D2LL };
 // Payload
 const int min_payload_size = 4;
 const int max_payload_size = 32;
-int next_payload_size = min_payload_size;
 char receive_payload[max_payload_size+1]; // +1 to allow room for a terminating NULL char
 
 // DMX Channels
-//DMX_Master dmx_master ( 100 , 2 );
+DMX_Master dmx_master ( 100 , 2 );
 
 void setup(void)
 {
 
   // Enable DMX, Set Shutter and Dimmer
-  //dmx_master.enable();
-  //dmx_master.setChannelRange( 1, 2, 255 );
-
-  // Print preamble
-  Serial.begin(115200);
-  Serial.println(F("iFollowSpot"));
+  dmx_master.enable();
+  dmx_master.setChannelRange( 1, 2, 255 );
 
   // Setup and configure rf radio
   radio.begin();
@@ -53,9 +48,6 @@ void setup(void)
 
   // Start listening
   radio.startListening();
-
-  // Dump the configuration of the rf unit for debugging
-  radio.printDetails();
 }
 
 void loop(void)
@@ -78,12 +70,6 @@ void loop(void)
     // Put a zero at the end for easy printing
     receive_payload[len] = 0;
 
-    // Spew it
-    Serial.print(F("Got response size="));
-    Serial.print(len);
-    Serial.print(F(" value="));
-    Serial.println(receive_payload);
-
     // Decode JSON
     const size_t bufferSize = JSON_OBJECT_SIZE(2) + 20;
     DynamicJsonBuffer jsonBuffer(bufferSize);
@@ -92,19 +78,15 @@ void loop(void)
     int c = root["c"];
     int v = root["v"];
 
-    // Print Channel and Value
-    Serial.println(c);
-    Serial.println(v);
 
     // Set Channel and Value
-    //dmx_master.setChannelValue ( c, v );
+    dmx_master.setChannelValue ( c, v );
 
     // First, stop listening so we can talk
     radio.stopListening();
 
     // Send the final one back.
     radio.write( receive_payload, len );
-    Serial.println(F("Sent response."));
 
     // Now, resume listening so we catch the next packets.
     radio.startListening();

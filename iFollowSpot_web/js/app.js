@@ -6,8 +6,8 @@
  */
 
 // ========== MQTT CONFIGURATION ==========
-var client = mqtt.connect({host: 'test.mosquitto.org', port: 8080});
-var topic = "ifollowspot/demo";
+var client = mqtt.connect({host: '192.168.1.1', port: 1883});
+var topic = "ifollowspot";
 
 
 
@@ -19,6 +19,9 @@ var dmxTiltChD   = 4;
 var dimmerStartD = 128;
 var panCenterD   = 0;
 var tiltCenterD  = 0;
+
+var panFullD     = 540;
+var tiltFullD    = 180;
 
 var panMaxD      = 90;
 var panMinD      = -90;
@@ -39,6 +42,9 @@ var dimmerStart = dimmerStartD;
 var panCenter   = panCenterD;
 var tiltCenter  = tiltCenterD;
 
+var panFull     = panFullD;
+var tiltFull    = tiltFullD;
+
 var panMax      = panMaxD;
 var panMin      = panMinD;
 
@@ -51,8 +57,8 @@ var tiltDeg     = panCenter;
 
 // Default DMX values for all channels
 var dimmer      = dimmerStart;
-var pan         = degreeToDMX(panCenter);
-var tilt        = degreeToDMX(tiltCenter);
+var pan         = degToDMX(panCenter, panFull);
+var tilt        = degToDMX(tiltCenter, tiltFull);
 
 // UI Controls: On screen controls
 var dimmerControl = document.getElementById("dimmer-input");
@@ -66,6 +72,9 @@ var tiltDMXControl    = document.getElementById("tilt-channel");
 
 var panCenterControl  = document.getElementById("pan-center");
 var tiltCenterControl = document.getElementById("tilt-center");
+
+var panFullControl    = document.getElementById("pan-full");
+var tiltFullControl   = document.getElementById("tilt-full");
 
 var panMaxControl     = document.getElementById("pan-max");
 var panMinControl     = document.getElementById("pan-min");
@@ -81,9 +90,27 @@ var restoreControl    = document.getElementById("restore-settings");
 
 // ========== Functions ==========
 
+// Throttle funciton for limiting execution per second on commands
+function throttle(fn, wait) {
+  var time = Date.now();
+  return function() {
+    if ((time + wait - Date.now()) < 0) {
+      fn();
+      time = Date.now();
+    }
+  }
+}
+
 // Convert degrees to 8-Bit
-function degreeToDMX(degreeValue) {
-  return Math.round((((degreeValue * 65536) / 360) * 256) / 65536);
+function degToDMX(degreeValue, fullRotation) {
+  dmxValue = Math.round(((((degreeValue * 65536) / fullRotation) * 256) / 65536) + 128);
+  if (dmxValue < 0) {
+    dmxValue = 0;
+  }
+  if (dmxValue > 255) {
+    dmxValue = 255;
+  }
+  return dmxValue;
 }
 
 // Reset settings
@@ -95,6 +122,9 @@ function resetSettings() {
   dimmerStart = dimmerStartD;
   panCenter   = panCenterD;
   tiltCenter  = tiltCenterD;
+
+  panFull     = panFullD;
+  tiltFull    = tiltFullD;
 
   panMax      = panMaxD;
   panMin      = panMinD;
@@ -114,6 +144,10 @@ function displaySettings() {
   // Display origin values in settings menu
   document.getElementById("pan-center").value = panCenter;
   document.getElementById("tilt-center").value = tiltCenter;
+
+  // Display full rotation values in settings menu
+  document.getElementById("pan-full").value = panFull;
+  document.getElementById("tilt-full").value = tiltFull;
 
   // Display limits in settings menu
   document.getElementById("pan-max").value = panMax;
@@ -139,19 +173,21 @@ function displayDMXStatus() {
   document.getElementById("dimmer-dmx-value").innerHTML = dimmer;
   document.getElementById("pan-dmx-value").innerHTML = pan;
   document.getElementById("tilt-dmx-value").innerHTML = tilt;
+
+  //console.log("Tilt: " + tilt + ", Pan: " + pan);
 }
 
 // Set max/min on center inputs
 function setMaxMin() {
   document.getElementById("pan-center").max = panMax;
   document.getElementById("pan-center").min = panMin;
-  document.getElementById("pan-control").max = degreeToDMX(panMax);
-  document.getElementById("pan-control").min = degreeToDMX(panMin);
+  document.getElementById("pan-control").max = degToDMX(panMax, panFull);
+  document.getElementById("pan-control").min = degToDMX(panMin, panFull);
 
   document.getElementById("tilt-center").max = tiltMax;
   document.getElementById("tilt-center").min = tiltMin;
-  document.getElementById("tilt-control").max = degreeToDMX(tiltMax);
-  document.getElementById("tilt-control").min = degreeToDMX(tiltMin);
+  document.getElementById("tilt-control").max = degToDMX(tiltMax, tiltFull);
+  document.getElementById("tilt-control").min = degToDMX(tiltMin, tiltFull);
 }
 
 // Check if the client is connected to the MQTT server
@@ -165,9 +201,12 @@ function checkMqttStatus() {
 
 // Publish a command to the MQTT server
 function publishCommand(channel, value) {
-  cmdObj = { "ch":channel, "value":value };
+  cmdObj = { "c":parseInt(channel), "v":parseInt(value) };
   cmdJSON = JSON.stringify(cmdObj);
+  cmdString = channel + "," + value;
+  // Publish as json
   client.publish(topic, cmdJSON);
+  displayDMXStatus();
 }
 
 function restoreSettings(notification) {
@@ -180,24 +219,27 @@ function restoreSettings(notification) {
       settings = JSON.parse(localStorage.settings);
 
       // Saved settings
-      dmxDimmerCh = settings.dmxDimmerCh;
-      dmxPanCh    = settings.dmxPanCh;
-      dmxTiltCh   = settings.dmxTiltCh;
+      dmxDimmerCh = parseInt(settings.dmxDimmerCh);
+      dmxPanCh    = parseInt(settings.dmxPanCh);
+      dmxTiltCh   = parseInt(settings.dmxTiltCh);
 
-      panCenter   = settings.panCenter;
-      tiltCenter  = settings.tiltCenter;
+      panCenter   = parseInt(settings.panCenter);
+      tiltCenter  = parseInt(settings.tiltCenter);
 
-      panMax      = settings.panMax;
-      panMin      = settings.panMin;
+      panFull     = parseInt(settings.panFull);
+      tiltFull    = parseInt(settings.tiltFull);
 
-      tiltMax     = settings.tiltMax;
-      tiltMin     = settings.tiltMin;
+      panMax      = parseInt(settings.panMax);
+      panMin      = parseInt(settings.panMin);
+
+      tiltMax     = parseInt(settings.tiltMax);
+      tiltMin     = parseInt(settings.tiltMin);
 
       panDeg = panCenter;
       tiltDeg = panCenter;
 
-      pan = degreeToDMX(panCenter);
-      tilt = degreeToDMX(tiltCenter);
+      pan = degToDMX(panCenter, panFull);
+      tilt = degToDMX(tiltCenter, tiltFull);
 
     } else {
       UIkit.notification("No saved state found.", {status: 'primary'});
@@ -219,21 +261,22 @@ function restoreSettings(notification) {
 client.on("message", function (topic, payload) {
 
   cmdString = payload.toString();
+  // JSON
   cmdJSON = JSON.parse(cmdString);
-  channel = cmdJSON.ch;
-  value = cmdJSON.value;
+  channel = cmdJSON.c;
+  value = cmdJSON.v;
 
-  switch (channel) {
+  switch (parseInt(channel)) {
     case dmxDimmerCh:
       dimmer = value;
       break;
     case dmxPanCh:
       pan = value;
-      panDeg = Math.round((((value * 65536) / 256) * 360) / 65536);
+      panDeg = Math.round(((((value * 65536) / 256) * (panFull / 2)) / 65536) - (panFull / 2));
       break;
     case dmxTiltCh:
       tilt = value;
-      tiltDeg = Math.round((((value * 65536) / 256) * 360) / 65536);
+      tiltDeg = Math.round(((((value * 65536) / 256) * (tiltFull / 2)) / 65536) - (tiltFull / 2));
       break;
     default:
       break;
@@ -277,7 +320,7 @@ dimmerControl.addEventListener("input", function () {
 });
 
 panControl.addEventListener("input", function () {
-  if (this.value > degreeToDMX(panMin) && this.value < degreeToDMX(panMax)) {
+  if (this.value > degToDMX(panMin, panFull) && this.value < degToDMX(panMax, panFull)) {
     publishCommand(dmxPanCh, this.value);
     document.getElementById("pan").setAttribute("class", "");
   } else {
@@ -286,7 +329,7 @@ panControl.addEventListener("input", function () {
 });
 
 tiltControl.addEventListener("input", function () {
-  if (this.value > degreeToDMX(tiltMin) && this.value < degreeToDMX(tiltMax)) {
+  if (this.value > degToDMX(tiltMin, tiltFull) && this.value < degToDMX(tiltMax, tiltFull)) {
     publishCommand(dmxTiltCh, this.value);
     document.getElementById("tilt").setAttribute("class", "");
   } else {
@@ -314,36 +357,45 @@ tiltDMXControl.addEventListener("change", function() {
 // Center
 panCenterControl.addEventListener("change", function() {
   panCenter = this.value;
-  publishCommand(dmxPanCh, degreeToDMX(panCenter));
+  publishCommand(dmxPanCh, degToDMX(panCenter, panFull));
 });
 
 tiltCenterControl.addEventListener("change", function() {
   tiltCenter = this.value;
-  publishCommand(dmxTiltCh, degreeToDMX(tiltCenter));
+  publishCommand(dmxTiltCh, degToDMX(tiltCenter, tiltFull));
+});
+
+// Full Rotation
+panFullControl.addEventListener("change", function() {
+  panFull = this.value;
+});
+
+tiltFullControl.addEventListener("change", function() {
+  tiltFull = this.value;
 });
 
 // Limits
 panMaxControl.addEventListener("change", function() {
   panMax = this.value;
-  publishCommand(dmxPanCh, degreeToDMX(panMax));
+  publishCommand(dmxPanCh, degToDMX(panMax, panFull));
   setMaxMin();
 });
 
 panMinControl.addEventListener("change", function() {
   panMin = this.value;
-  publishCommand(dmxPanCh, degreeToDMX(panMin));
+  publishCommand(dmxPanCh, degToDMX(panMin, panFull));
   setMaxMin();
 });
 
 tiltMaxControl.addEventListener("change", function() {
   tiltMax = this.value;
-  publishCommand(dmxTiltCh, degreeToDMX(tiltMax));
+  publishCommand(dmxTiltCh, degToDMX(tiltMax, tiltFull));
   setMaxMin();
 });
 
 tiltMinControl.addEventListener("change", function() {
   tiltMin = this.value;
-  publishCommand(dmxTiltCh, degreeToDMX(tiltMin));
+  publishCommand(dmxTiltCh, degToDMX(tiltMin, tiltFull));
   setMaxMin();
 });
 
@@ -356,6 +408,8 @@ saveControl.addEventListener("click", function() {
     "dmxTiltCh"   : dmxTiltCh,
     "panCenter"   : panCenter,
     "tiltCenter"  : tiltCenter,
+    "panFull"     : panFull,
+    "tiltFull"    : tiltFull,
     "panMax"      : panMax,
     "panMin"      : panMin,
     "tiltMax"     : tiltMax,
@@ -405,9 +459,8 @@ restoreControl.addEventListener("click", function() {
 document.addEventListener('DOMContentLoaded', function() {
   restoreSettings(true);
   setMaxMin();
+  // Subscribe to MQTT topic (see MQTT Configuration)
+  client.subscribe(topic);
   displaySettings();
   displayDMXStatus();
 });
-
-// Subscribe to MQTT topic (see MQTT Configuration)
-client.subscribe(topic);

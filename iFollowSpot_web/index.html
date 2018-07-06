@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/app.css" />
     <script src="bower_components/uikit/dist/js/uikit.min.js"></script>
     <script src="bower_components/uikit/dist/js/uikit-icons.min.js"></script>
+    <script src="js/lodash-min.js"></script>
     <script src="js/mqtt-min.js"></script>
   </head>
   <body>
@@ -24,7 +25,7 @@
     <div class="uk-offcanvas-content">
 
       <div class="uk-container-small uk-align-center">
-        
+
         <div class="uk-flex uk-flex-between uk-padding-small">
           <button class="uk-button uk-button-link" onclick="checkMqttStatus()"><span id="mqtt-status" uk-icon="clock"></span></button>
           <a href="#app-info-modal" uk-toggle><h1 class="uk-text-lead uk-text-primary uk-margin-remove">iFollowSpot</h1></a>
@@ -43,7 +44,7 @@
           </div>
         </div>
 
-        <img class="uk-width-1-1" src="http://via.placeholder.com/640x480" width="640" height="480">
+        <img class="uk-width-1-1" src="http://192.168.1.1:8081" width="640" height="480">
 
         <div class="uk-grid uk-grid-collapse uk-flex-middle uk-padding-small" uk-grid>
           <div class="uk-width-1-2">
@@ -136,6 +137,24 @@
                 <input required class="uk-input" id="tilt-center" type="number">
               </div>
             </div>
+
+            <h3>Full Rotation</h3>
+
+            <div class="uk-margin">
+              <label class="uk-form-label" for="pan-full">Pan [°]</label>
+              <div class="uk-form-controls">
+                <input required class="uk-input" id="pan-full" type="number">
+              </div>
+            </div>
+
+            <div class="uk-margin">
+              <label class="uk-form-label" for="tilt-full">Tilt [°]</label>
+              <div class="uk-form-controls">
+                <input required class="uk-input" id="tilt-full" type="number">
+              </div>
+            </div>
+
+
 
             <h3>Rotation Limits</h3>
 
