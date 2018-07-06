@@ -90,17 +90,6 @@ var restoreControl    = document.getElementById("restore-settings");
 
 // ========== Functions ==========
 
-// Throttle funciton for limiting execution per second on commands
-function throttle(fn, wait) {
-  var time = Date.now();
-  return function() {
-    if ((time + wait - Date.now()) < 0) {
-      fn();
-      time = Date.now();
-    }
-  }
-}
-
 // Convert degrees to 8-Bit
 function degToDMX(degreeValue, fullRotation) {
   dmxValue = Math.round(((((degreeValue * 65536) / fullRotation) * 256) / 65536) + 128);
@@ -272,11 +261,11 @@ client.on("message", function (topic, payload) {
       break;
     case dmxPanCh:
       pan = value;
-      panDeg = Math.round(((((value * 65536) / 256) * (panFull / 2)) / 65536) - (panFull / 2));
+      panDeg = Math.round(((((value * 65536) / 256) * panFull) / 65536) - (panFull / 2));
       break;
     case dmxTiltCh:
       tilt = value;
-      tiltDeg = Math.round(((((value * 65536) / 256) * (tiltFull / 2)) / 65536) - (tiltFull / 2));
+      tiltDeg = Math.round(((((value * 65536) / 256) * tiltFull) / 65536) - (tiltFull / 2));
       break;
     default:
       break;
@@ -315,9 +304,9 @@ client.on("error", function (error) {
 
 // ========== HANDLE CONTROL INPUTS ==========
 
-dimmerControl.addEventListener("input", function () {
+dimmerControl.addEventListener("input", _.debounce(function () {
   publishCommand(dmxDimmerCh, this.value);
-});
+}, 10, { trailing: true, leading: true }));
 
 panControl.addEventListener("input", function () {
   if (this.value > degToDMX(panMin, panFull) && this.value < degToDMX(panMax, panFull)) {

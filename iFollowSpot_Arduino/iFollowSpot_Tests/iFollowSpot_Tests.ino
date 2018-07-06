@@ -57,8 +57,6 @@ void loop(void)
   while ( radio.available() )
   {
 
-    Serial.print("Radio available");
-
     // Fetch the payload, and see if this was the last one.
     uint8_t len = radio.getDynamicPayloadSize();
     
@@ -73,9 +71,7 @@ void loop(void)
     receive_payload[len] = 0;
 
     // Spew it
-    Serial.print(F("Got response size="));
-    Serial.print(len);
-    Serial.print(F(" value="));
+    Serial.print(F("Command received: "));
     Serial.println(receive_payload);
 
     // First, stop listening so we can talk
