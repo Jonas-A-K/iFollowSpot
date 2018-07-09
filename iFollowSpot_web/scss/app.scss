@@ -1,34 +1,144 @@
 // 1. Your custom variables and variable overwrites.
+$global-primary-background: #1e87f0;
+$global-border: #e5e5e5;
+
 $base-heading-font-weight: 200;
 
 $form-horizontal-label-width: 100px;
 $form-horizontal-controls-margin-left: 115px;
+
+$form-range-thumb-height: 30px;
+$form-range-thumb-border-radius: 500px;
+$form-range-track-height: 6px;
 
 // 2. Import default variables and available mixins.
 @import "../bower_components/uikit/src/scss/variables-theme.scss";
 @import "../bower_components/uikit/src/scss/mixins-theme.scss";
 
 // 3. Your custom mixin overwrites.
-@mixin hook-card() { color: #000; }
+
 
 // 4. Import UIkit.
 @import "../bower_components/uikit/src/scss/uikit-theme.scss";
 
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.fs-main {
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-gap: 16px;
+  padding: 16px;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto auto 150px 50px;
+  grid-template-areas:
+    "header header header"
+    "videofeed videofeed videofeed"
+    "controlOne . controlTwo"
+    "footer footer footer";
+
+  @media (orientation: landscape) {
+    grid-template-columns: 200px auto 200px;
+    grid-template-rows: auto auto 50px;
+    grid-template-areas:
+      "header header header"
+      "controlOne videofeed controlTwo"
+      "footer footer footer";
+
+  }
+}
+
+
+nav {
+  grid-area: header;
+}
+
+.fs-videofeed {
+  grid-area: videofeed;
+  width: 100%;
+}
+
+.fs-pan-wrapper {
+  grid-area: controlOne;
+  align-self: center;
+}
+
 .fs-pan {
-  width: 150px;
+
 }
 
 .fs-tilt-wrapper {
+  grid-area: controlTwo;
+  align-self: center;
   height: 150px;
 }
 
 .fs-tilt {
   width: 150px;
+  margin-left: 50%;
   transform-origin: 75px 75px;
   transform: rotate(-90deg);
+}
+
+.fs-dimmer-wrapper {
+  grid-area: footer;
 }
 
 #dimmer-output, #pan, #tilt {
   display: inline-block;
   width: 2em;
+}
+
+
+
+// Rounded input switch
+/* The switch - the box around the slider */
+.switch {
+ position: relative;
+ display: inline-block;
+ width: 72px;
+ height: 42px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+ position: absolute;
+ cursor: pointer;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-color: $global-border;
+ transition: .4s;
+ border-radius: 34px;
+}
+
+.slider:before {
+ position: absolute;
+ content: "";
+ height: $form-range-thumb-height;
+ width: $form-range-thumb-height;
+ left: 6px;
+ bottom: 6px;
+ background-color: white;
+ transition: .4s;
+ border-radius: 42px;
+}
+
+input:checked + .slider {
+ background-color: $global-primary-background;
+}
+
+input:focus + .slider {
+ box-shadow: 0 0 1px $global-primary-background;
+}
+
+input:checked + .slider:before {
+ transform: translateX($form-range-thumb-height);
 }

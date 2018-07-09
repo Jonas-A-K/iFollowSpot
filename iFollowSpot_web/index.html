@@ -22,181 +22,242 @@
       </div>
     </div>
 
-    <div class="uk-offcanvas-content">
+    <div id="dmx-info-modal" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <table class="uk-table uk-table-striped">
+          <thead>
+            <tr>
+              <th>Axis</th>
+              <th>Channel</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Shutter</td>
+              <td id="shutter-ch-status"></td>
+              <td id="shutter-dmx-value"></td>
+            </tr>
+            <tr>
+              <td>Dimmer</td>
+              <td id="dimmer-ch-status"></td>
+              <td id="dimmer-dmx-value"></td>
+            </tr>
+            <tr>
+              <td>Pan</td>
+              <td id="pan-ch-status"></td>
+              <td id="pan-dmx-value"></td>
+            </tr>
+            <tr>
+              <td>Tilt</td>
+              <td id="tilt-ch-status"></td>
+              <td id="tilt-dmx-value"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-      <div class="uk-container-small uk-align-center">
+    <div class="fs-main">
 
-        <div class="uk-flex uk-flex-between uk-padding-small">
+      <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+        <div class="uk-navbar-left">
           <button class="uk-button uk-button-link" onclick="checkMqttStatus()"><span id="mqtt-status" uk-icon="clock"></span></button>
+        </div>
+        <div class="uk-navbar-center">
           <a href="#app-info-modal" uk-toggle><h1 class="uk-text-lead uk-text-primary uk-margin-remove">iFollowSpot</h1></a>
+        </div>
+        <div class="uk-navbar-right">
+          <button class="uk-button uk-button-link uk-margin-right" uk-toggle="target: #dmx-info-modal" type="button">DMX</button>
           <button class="uk-button uk-button-link" uk-toggle="target: #settings" type="button"><span uk-icon="cog"></span></button>
         </div>
+      </nav>
 
-        <div class="uk-flex uk-flex-around uk-padding-small uk-padding-remove-top uk-text-small">
-          <div class="uk-flex-1 uk-text-center">
-            <span>DIMMER: </span><span id="dimmer-output"></span>
-          </div>
-          <div class="uk-flex-1 uk-text-center">
-            <span>PAN: </span><span id="pan"></span>
-          </div>
-          <div class="uk-flex-1 uk-text-center">
-            <span>TILT: </span><span id="tilt"></span>
-          </div>
-        </div>
+      <img class="fs-videofeed" src="http://192.168.1.1:8081" width="640" height="480">
 
-        <img class="uk-width-1-1" src="http://192.168.1.1:8081" width="640" height="480">
-
-        <div class="uk-grid uk-grid-collapse uk-flex-middle uk-padding-small" uk-grid>
-          <div class="uk-width-1-2">
-            <input class="uk-range fs-pan" id="pan-control" type="range" step="1">
-          </div>
-          <div class="uk-width-1-2 fs-tilt-wrapper">
-            <input class="uk-range fs-tilt" id="tilt-control" type="range" step="1">
-          </div>
-        </div>
-
-        <div class="uk-flex uk-flex-around uk-padding-small">
-          <div class="uk-margin-right">
-            <span>Dimmer:</span>
-          </div>
-          <input class="uk-range" id="dimmer-input" type="range" min="0" max="255" step="1">
-        </div>
-
-        <div class="uk-width-1-1">
-          <table class="uk-table uk-table-striped">
-            <thead>
-              <tr>
-                <th>Axis</th>
-                <th>Channel</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Dimmer</td>
-                <td id="dimmer-ch-status"></td>
-                <td id="dimmer-dmx-value"></td>
-              </tr>
-              <tr>
-                <td>Pan</td>
-                <td id="pan-ch-status"></td>
-                <td id="pan-dmx-value"></td>
-              </tr>
-              <tr>
-                <td>Tilt</td>
-                <td id="tilt-ch-status"></td>
-                <td id="tilt-dmx-value"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="fs-pan-wrapper">
+        <label class="switch">
+          <input id="shutter-control" type="checkbox">
+          <span class="slider"></span>
+        </label>
+        <br>
+        <span>PAN: </span><span id="pan"></span>
+        <input class="uk-range fs-pan" id="pan-control" type="range" step="1">
       </div>
 
-      <div id="settings" uk-offcanvas="overlay: true">
-        <div class="uk-offcanvas-bar">
+      <div class="fs-tilt-wrapper">
+        <span>TILT: </span><span id="tilt"></span>
+        <input class="uk-range fs-tilt" id="tilt-control" type="range" step="1">
+      </div>
 
-          <button class="uk-offcanvas-close" type="button" uk-close></button>
+      <div class="fs-dimmer-wrapper">
+        <span>DIMMER: </span><span id="dimmer-output"></span>
+        <input class="uk-range" id="dimmer-input" type="range" min="0" max="255" step="1">
+      </div>
 
-          <form class="uk-form-horizontal">
+    </div>
 
-            <h3>DMX Channels</h3>
 
-            <div class="uk-margin">
-              <label class="uk-form-label" for="pan-channel">Dimmer</label>
-              <div class="uk-form-controls">
-                <input required class="uk-input" id="dimmer-channel" type="number" min="1" max="512">
+    <div id="settings" class="uk-modal-full" uk-modal>
+      <div class="uk-modal-dialog" uk-overflow-auto>
+
+        <div class="uk-modal-body">
+
+          <button class="uk-modal-close-default" type="button" uk-close></button>
+
+          <form class="uk-grid-divider" uk-grid>
+
+            <div class="uk-width-1-2 uk-width-1-3@s uk-width-1-4@m">
+
+              <h3>DMX Channels</h3>
+
+              <div class="uk-margin">
+                <label class="uk-form-label" for="shutter-channel">Shutter</label>
+                <div class="uk-form-controls">
+                  <input required class="uk-input" id="shutter-channel" type="number" min="1" max="512">
+                </div>
               </div>
+
+              <div class="uk-margin">
+                <label class="uk-form-label" for="pan-channel">Dimmer</label>
+                <div class="uk-form-controls">
+                  <input required class="uk-input" id="dimmer-channel" type="number" min="1" max="512">
+                </div>
+              </div>
+
+              <div class="uk-margin">
+                <label class="uk-form-label" for="pan-channel">Pan</label>
+                <div class="uk-form-controls">
+                  <input required class="uk-input" id="pan-channel" type="number" min="1" max="512">
+                </div>
+              </div>
+
+              <div class="uk-margin">
+                <label class="uk-form-label" for="tilt-channel">Tilt</label>
+                <div class="uk-form-controls">
+                  <input required class="uk-input" id="tilt-channel" type="number" min="1" max="512">
+                </div>
+              </div>
+
             </div>
 
-            <div class="uk-margin">
-              <label class="uk-form-label" for="pan-channel">Pan</label>
-              <div class="uk-form-controls">
-                <input required class="uk-input" id="pan-channel" type="number" min="1" max="512">
+            <div class="uk-width-1-2 uk-width-1-3@s uk-width-1-4@m">
+
+              <h3>Pan</h3>
+
+              <div class="uk-margin">
+                <label class="uk-form-label" for="pan-invert">Invert</label>
+                <div class="uk-form-controls">
+                  <input class="uk-checkbox" id="pan-invert" type="checkbox">
+                </div>
               </div>
+
+              <div class="uk-margin">
+                <label class="uk-form-label" for="pan-full">Full [°]</label>
+                <div class="uk-form-controls">
+                  <input required class="uk-input" id="pan-full" type="number">
+                </div>
+              </div>
+
+              <div class="uk-margin">
+                <label class="uk-form-label" for="pan-center">Center [°]</label>
+                <div class="uk-form-controls">
+                  <input required class="uk-input" id="pan-center" type="number">
+                </div>
+              </div>
+
+              <div class="uk-margin">
+                <label class="uk-form-label" for="pan-min">Min [°]</label>
+                <div class="uk-form-controls">
+                  <input required class="uk-input" id="pan-min" type="number">
+                </div>
+              </div>
+
+              <div class="uk-margin">
+                <label class="uk-form-label" for="pan-max">Max [°]</label>
+                <div class="uk-form-controls">
+                  <input required class="uk-input" id="pan-max" type="number">
+                </div>
+              </div>
+
             </div>
 
-            <div class="uk-margin">
-              <label class="uk-form-label" for="tilt-channel">Tilt</label>
-              <div class="uk-form-controls">
-                <input required class="uk-input" id="tilt-channel" type="number" min="1" max="512">
+            <div class="uk-width-1-2 uk-width-1-3@s uk-width-1-4@m">
+
+              <h3>Tilt</h3>
+
+              <div class="uk-margin">
+                <label class="uk-form-label" for="tilt-invert">Invert</label>
+                <div class="uk-form-controls">
+                  <input class="uk-checkbox" id="tilt-invert" type="checkbox">
+                </div>
               </div>
+
+              <div class="uk-margin">
+                <label class="uk-form-label" for="tilt-full">Full [°]</label>
+                <div class="uk-form-controls">
+                  <input required class="uk-input" id="tilt-full" type="number">
+                </div>
+              </div>
+
+              <div class="uk-margin">
+                <label class="uk-form-label" for="tilt-center">Center [°]</label>
+                <div class="uk-form-controls">
+                  <input required class="uk-input" id="tilt-center" type="number">
+                </div>
+              </div>
+
+              <div class="uk-margin">
+                <label class="uk-form-label" for="tilt-min">Min [°]</label>
+                <div class="uk-form-controls">
+                  <input required class="uk-input" id="tilt-min" type="number">
+                </div>
+              </div>
+
+              <div class="uk-margin">
+                <label class="uk-form-label" for="tilt-max">Max [°]</label>
+                <div class="uk-form-controls">
+                  <input required class="uk-input" id="tilt-max" type="number">
+                </div>
+              </div>
+
             </div>
 
-            <h3>Rotation Origin</h3>
+            <div class="uk-width-1-2 uk-width-1-3@s uk-width-1-4@m">
 
-            <div class="uk-margin">
-              <label class="uk-form-label" for="pan-center">Pan [°]</label>
-              <div class="uk-form-controls">
-                <input required class="uk-input" id="pan-center" type="number">
+              <h3>Shutter</h3>
+
+              <div class="uk-margin">
+                <label class="uk-form-label" for="shutter-open">Open</label>
+                <div class="uk-form-controls">
+                  <input required class="uk-input" id="shutter-open" type="number" min="0" max="255">
+                </div>
               </div>
-            </div>
 
-            <div class="uk-margin">
-              <label class="uk-form-label" for="tilt-center">Tilt [°]</label>
-              <div class="uk-form-controls">
-                <input required class="uk-input" id="tilt-center" type="number">
+              <div class="uk-margin">
+                <label class="uk-form-label" for="shutter-closed">Closed</label>
+                <div class="uk-form-controls">
+                  <input required class="uk-input" id="shutter-closed" type="number" min="0" max="255">
+                </div>
               </div>
-            </div>
 
-            <h3>Full Rotation</h3>
-
-            <div class="uk-margin">
-              <label class="uk-form-label" for="pan-full">Pan [°]</label>
-              <div class="uk-form-controls">
-                <input required class="uk-input" id="pan-full" type="number">
-              </div>
-            </div>
-
-            <div class="uk-margin">
-              <label class="uk-form-label" for="tilt-full">Tilt [°]</label>
-              <div class="uk-form-controls">
-                <input required class="uk-input" id="tilt-full" type="number">
-              </div>
-            </div>
-
-
-
-            <h3>Rotation Limits</h3>
-
-            <div class="uk-margin">
-              <label class="uk-form-label" for="pan-max">Max Pan [°]</label>
-              <div class="uk-form-controls">
-                <input required class="uk-input" id="pan-max" type="number">
-              </div>
-            </div>
-
-            <div class="uk-margin">
-              <label class="uk-form-label" for="pan-min">Min Pan [°]</label>
-              <div class="uk-form-controls">
-                <input required class="uk-input" id="pan-min" type="number">
-              </div>
-            </div>
-
-            <div class="uk-margin">
-              <label class="uk-form-label" for="tilt-max">Max Tilt [°]</label>
-              <div class="uk-form-controls">
-                <input required class="uk-input" id="tilt-max" type="number">
-              </div>
-            </div>
-
-            <div class="uk-margin">
-              <label class="uk-form-label" for="tilt-min">Min Tilt [°]</label>
-              <div class="uk-form-controls">
-                <input required class="uk-input" id="tilt-min" type="number">
-              </div>
             </div>
 
           </form>
 
-          <hr>
+        </div>
 
-          <button class="uk-button uk-width-1-1 uk-margin-small-bottom uk-button-primary" id="save-settings"><span uk-icon="download">Save </button>
-          <button class="uk-button uk-width-1-1 uk-margin-small-bottom uk-button-warning" id="restore-settings"><span uk-icon="history">Restore </button>
-          <button class="uk-button uk-width-1-1 uk-button-danger" id="reset-settings"><span uk-icon="trash">Reset </button>
+        <div class="uk-modal-footer uk-text-right">
+
+          <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+          <button class="uk-button uk-button-primary" id="save-settings"><span uk-icon="download">Save </button>
+          <button class="uk-button" id="restore-settings"><span uk-icon="history">Restore </button>
+          <button class="uk-button uk-button-danger" id="reset-settings"><span uk-icon="trash">Reset </button>
 
         </div>
-      </div>
 
+      </div>
     </div>
 
     <script src="js/app.js"></script>

@@ -31,7 +31,7 @@ void setup(void)
 
   // Enable DMX, Set Shutter and Dimmer
   dmx_master.enable();
-  dmx_master.setChannelRange( 1, 2, 255 );
+  //dmx_master.setChannelRange( 1, 2, 255 );
 
   // Setup and configure rf radio
   radio.begin();

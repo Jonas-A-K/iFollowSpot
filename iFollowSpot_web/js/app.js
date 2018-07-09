@@ -12,79 +12,102 @@ var topic = "ifollowspot";
 
 
 // ========== DEFAULT SETTINGS ==========
-var dmxDimmerChD = 1;
-var dmxPanChD    = 2;
-var dmxTiltChD   = 4;
+var dmxShutterChD  = 1;
+var dmxDimmerChD   = 2;
+var dmxPanChD      = 3;
+var dmxTiltChD     = 5;
 
-var dimmerStartD = 128;
-var panCenterD   = 0;
-var tiltCenterD  = 0;
+var panInvertD     = false;
+var tiltInvertD    = false;
 
-var panFullD     = 540;
-var tiltFullD    = 180;
+var dimmerStartD   = 128;
+var panCenterD     = 0;
+var tiltCenterD    = 0;
 
-var panMaxD      = 90;
-var panMinD      = -90;
+var panFullD       = 540;
+var tiltFullD      = 180;
 
-var tiltMaxD     = 90;
-var tiltMinD     = -90;
+var panMaxD        = 90;
+var panMinD        = -90;
+
+var tiltMaxD       = 90;
+var tiltMinD       = -90;
+
+var shutterOpenD   = 255;
+var shutterClosedD = 0;
 
 
 
 // ========== INITIALISING VARIABLES ==========
 
 // Settings to default values
-var dmxDimmerCh = dmxDimmerChD;
-var dmxPanCh    = dmxPanChD;
-var dmxTiltCh   = dmxTiltChD;
+var dmxShutterCh   = dmxShutterChD;
+var dmxDimmerCh    = dmxDimmerChD;
+var dmxPanCh       = dmxPanChD;
+var dmxTiltCh      = dmxTiltChD;
 
-var dimmerStart = dimmerStartD;
-var panCenter   = panCenterD;
-var tiltCenter  = tiltCenterD;
+var panInvert      = panInvertD;
+var tiltInvert     = tiltInvertD;
 
-var panFull     = panFullD;
-var tiltFull    = tiltFullD;
+var dimmerStart    = dimmerStartD;
+var panCenter      = panCenterD;
+var tiltCenter     = tiltCenterD;
 
-var panMax      = panMaxD;
-var panMin      = panMinD;
+var panFull        = panFullD;
+var tiltFull       = tiltFullD;
 
-var tiltMax     = tiltMaxD;
-var tiltMin     = tiltMinD;
+var panMax         = panMaxD;
+var panMin         = panMinD;
+
+var tiltMax        = tiltMaxD;
+var tiltMin        = tiltMinD;
+
+var shutterOpen    = shutterOpenD;
+var shutterClosed  = shutterClosedD;
 
 // Pan and tilt to origin
 var panDeg      = panCenter;
 var tiltDeg     = panCenter;
 
 // Default DMX values for all channels
+var shutter     = shutterClosed;
 var dimmer      = dimmerStart;
 var pan         = degToDMX(panCenter, panFull);
 var tilt        = degToDMX(tiltCenter, tiltFull);
 
 // UI Controls: On screen controls
-var dimmerControl = document.getElementById("dimmer-input");
-var panControl    = document.getElementById("pan-control");
-var tiltControl   = document.getElementById("tilt-control");
+var dimmerControl        = document.getElementById("dimmer-input");
+var panControl           = document.getElementById("pan-control");
+var tiltControl          = document.getElementById("tilt-control");
+var shutterControl       = document.getElementById("shutter-control");
 
 // UI Controls: Settings
-var dimmerDMXControl  = document.getElementById("dimmer-channel");
-var panDMXControl     = document.getElementById("pan-channel");
-var tiltDMXControl    = document.getElementById("tilt-channel");
+var shutterDMXControl    = document.getElementById("shutter-channel");
+var dimmerDMXControl     = document.getElementById("dimmer-channel");
+var panDMXControl        = document.getElementById("pan-channel");
+var tiltDMXControl       = document.getElementById("tilt-channel");
 
-var panCenterControl  = document.getElementById("pan-center");
-var tiltCenterControl = document.getElementById("tilt-center");
+var panInvertControl     = document.getElementById("pan-invert");
+var tiltInvertControl    = document.getElementById("tilt-invert");
 
-var panFullControl    = document.getElementById("pan-full");
-var tiltFullControl   = document.getElementById("tilt-full");
+var panCenterControl     = document.getElementById("pan-center");
+var tiltCenterControl    = document.getElementById("tilt-center");
 
-var panMaxControl     = document.getElementById("pan-max");
-var panMinControl     = document.getElementById("pan-min");
+var panFullControl       = document.getElementById("pan-full");
+var tiltFullControl      = document.getElementById("tilt-full");
 
-var tiltMaxControl    = document.getElementById("tilt-max");
-var tiltMinControl    = document.getElementById("tilt-min");
+var panMaxControl        = document.getElementById("pan-max");
+var panMinControl        = document.getElementById("pan-min");
 
-var saveControl       = document.getElementById("save-settings");
-var resetControl      = document.getElementById("reset-settings");
-var restoreControl    = document.getElementById("restore-settings");
+var tiltMaxControl       = document.getElementById("tilt-max");
+var tiltMinControl       = document.getElementById("tilt-min");
+
+var shutterOpenControl   = document.getElementById("shutter-open");
+var shutterClosedControl = document.getElementById("shutter-closed");
+
+var saveControl          = document.getElementById("save-settings");
+var resetControl         = document.getElementById("reset-settings");
+var restoreControl       = document.getElementById("restore-settings");
 
 
 
@@ -104,31 +127,43 @@ function degToDMX(degreeValue, fullRotation) {
 
 // Reset settings
 function resetSettings() {
-  dmxDimmerCh = dmxDimmerChD;
-  dmxPanCh    = dmxPanChD;
-  dmxTiltCh   = dmxTiltChD;
+  dmxShutterCh  = dmxShutterChD;
+  dmxDimmerCh   = dmxDimmerChD;
+  dmxPanCh      = dmxPanChD;
+  dmxTiltCh     = dmxTiltChD;
 
-  dimmerStart = dimmerStartD;
-  panCenter   = panCenterD;
-  tiltCenter  = tiltCenterD;
+  panInvert     = panInvertD;
+  tiltInvert    = tiltInvertD;
 
-  panFull     = panFullD;
-  tiltFull    = tiltFullD;
+  dimmerStart   = dimmerStartD;
+  panCenter     = panCenterD;
+  tiltCenter    = tiltCenterD;
 
-  panMax      = panMaxD;
-  panMin      = panMinD;
+  panFull       = panFullD;
+  tiltFull      = tiltFullD;
 
-  tiltMax     = tiltMaxD;
-  tiltMin     = tiltMinD;
+  panMax        = panMaxD;
+  panMin        = panMinD;
+
+  tiltMax       = tiltMaxD;
+  tiltMin       = tiltMinD;
+
+  shutterOpen   = shutterOpenD;
+  shutterClosed = shutterClosedD;
 }
 
 // Display settings
 function displaySettings() {
 
   // Display DMX chennels in settings menu
+  document.getElementById("shutter-channel").value = dmxShutterCh;
   document.getElementById("dimmer-channel").value = dmxDimmerCh;
   document.getElementById("pan-channel").value = dmxPanCh;
   document.getElementById("tilt-channel").value = dmxTiltCh;
+
+  // Display origin values in settings menu
+  document.getElementById("pan-invert").checked = panInvert;
+  document.getElementById("tilt-invert").checked = tiltInvert;
 
   // Display origin values in settings menu
   document.getElementById("pan-center").value = panCenter;
@@ -143,6 +178,10 @@ function displaySettings() {
   document.getElementById("pan-min").value = panMin;
   document.getElementById("tilt-max").value = tiltMax;
   document.getElementById("tilt-min").value = tiltMin;
+
+  // Display shutter closed and open states
+  document.getElementById("shutter-open").value = shutterOpen;
+  document.getElementById("shutter-closed").value = shutterClosed;
 }
 
 // Display DMX Status
@@ -154,16 +193,18 @@ function displayDMXStatus() {
   document.getElementById("tilt").innerHTML = tiltDeg + "°";
 
   // Display DMX channels
+  document.getElementById("shutter-ch-status").innerHTML = dmxShutterCh;
   document.getElementById("dimmer-ch-status").innerHTML = dmxDimmerCh;
   document.getElementById("pan-ch-status").innerHTML = dmxPanCh;
   document.getElementById("tilt-ch-status").innerHTML = dmxTiltCh;
 
   // Display DMX raw values
+  document.getElementById("shutter-dmx-value").innerHTML = shutter;
   document.getElementById("dimmer-dmx-value").innerHTML = dimmer;
   document.getElementById("pan-dmx-value").innerHTML = pan;
   document.getElementById("tilt-dmx-value").innerHTML = tilt;
 
-  //console.log("Tilt: " + tilt + ", Pan: " + pan);
+
 }
 
 // Set max/min on center inputs
@@ -208,27 +249,28 @@ function restoreSettings(notification) {
       settings = JSON.parse(localStorage.settings);
 
       // Saved settings
-      dmxDimmerCh = parseInt(settings.dmxDimmerCh);
-      dmxPanCh    = parseInt(settings.dmxPanCh);
-      dmxTiltCh   = parseInt(settings.dmxTiltCh);
+      dmxShutterCh  = parseInt(settings.dmxShutterCh);
+      dmxDimmerCh   = parseInt(settings.dmxDimmerCh);
+      dmxPanCh      = parseInt(settings.dmxPanCh);
+      dmxTiltCh     = parseInt(settings.dmxTiltCh);
 
-      panCenter   = parseInt(settings.panCenter);
-      tiltCenter  = parseInt(settings.tiltCenter);
+      panInvert     = settings.panInvert;
+      tiltInvert    = settings.tiltInvert;
 
-      panFull     = parseInt(settings.panFull);
-      tiltFull    = parseInt(settings.tiltFull);
+      panCenter     = parseInt(settings.panCenter);
+      tiltCenter    = parseInt(settings.tiltCenter);
 
-      panMax      = parseInt(settings.panMax);
-      panMin      = parseInt(settings.panMin);
+      panFull       = parseInt(settings.panFull);
+      tiltFull      = parseInt(settings.tiltFull);
 
-      tiltMax     = parseInt(settings.tiltMax);
-      tiltMin     = parseInt(settings.tiltMin);
+      panMax        = parseInt(settings.panMax);
+      panMin        = parseInt(settings.panMin);
 
-      panDeg = panCenter;
-      tiltDeg = panCenter;
+      tiltMax       = parseInt(settings.tiltMax);
+      tiltMin       = parseInt(settings.tiltMin);
 
-      pan = degToDMX(panCenter, panFull);
-      tilt = degToDMX(tiltCenter, tiltFull);
+      shutterOpen   = parseInt(settings.shutterOpen);
+      shutterClosed = parseInt(settings.shutterClosed);
 
     } else {
       UIkit.notification("No saved state found.", {status: 'primary'});
@@ -256,6 +298,9 @@ client.on("message", function (topic, payload) {
   value = cmdJSON.v;
 
   switch (parseInt(channel)) {
+    case dmxShutterCh:
+      shutter = value;
+      break;
     case dmxDimmerCh:
       dimmer = value;
       break;
@@ -310,7 +355,11 @@ dimmerControl.addEventListener("input", _.debounce(function () {
 
 panControl.addEventListener("input", function () {
   if (this.value > degToDMX(panMin, panFull) && this.value < degToDMX(panMax, panFull)) {
-    publishCommand(dmxPanCh, this.value);
+    if (panInvert == true) {
+      publishCommand(dmxPanCh, (255 - this.value));
+    } else {
+      publishCommand(dmxPanCh, this.value);
+    }
     document.getElementById("pan").setAttribute("class", "");
   } else {
     document.getElementById("pan").setAttribute("class", "uk-text-danger");
@@ -319,10 +368,22 @@ panControl.addEventListener("input", function () {
 
 tiltControl.addEventListener("input", function () {
   if (this.value > degToDMX(tiltMin, tiltFull) && this.value < degToDMX(tiltMax, tiltFull)) {
-    publishCommand(dmxTiltCh, this.value);
+    if (tiltInvert == true) {
+      publishCommand(dmxTiltCh, (255 - this.value));
+    } else {
+      publishCommand(dmxTiltCh, this.value);
+    }
     document.getElementById("tilt").setAttribute("class", "");
   } else {
     document.getElementById("tilt").setAttribute("class", "uk-text-danger");
+  }
+});
+
+shutterControl.addEventListener("change", function() {
+  if (this.checked == true) {
+    publishCommand(dmxShutterCh, shutterOpen);
+  } else {
+    publishCommand(dmxShutterCh, shutterClosed);
   }
 });
 
@@ -331,6 +392,10 @@ tiltControl.addEventListener("input", function () {
 // ========== HANDLE SETTINGS ==========
 
 // DMX channels
+shutterDMXControl.addEventListener("change", function() {
+  dmxShutterCh = this.value;
+});
+
 dimmerDMXControl.addEventListener("change", function() {
   dmxDimmerCh = this.value;
 });
@@ -341,6 +406,15 @@ panDMXControl.addEventListener("change", function() {
 
 tiltDMXControl.addEventListener("change", function() {
   dmxTiltCh = this.value;
+});
+
+// Channel inversion
+panInvertControl.addEventListener("change", function() {
+  panInvert = this.checked;
+});
+
+tiltInvertControl.addEventListener("change", function() {
+  tiltInvert = this.checked;
 });
 
 // Center
@@ -388,21 +462,36 @@ tiltMinControl.addEventListener("change", function() {
   setMaxMin();
 });
 
+shutterOpenControl.addEventListener("change", function() {
+  shutterOpen = this.value;
+  publishCommand(dmxShutterCh, shutterOpen);
+});
+
+shutterOpenControl.addEventListener("change", function() {
+  shutterClosed = this.value;
+  publishCommand(dmxShutterCh, shutterClosed);
+});
+
 // Save settings
 saveControl.addEventListener("click", function() {
 
   settings = {
-    "dmxDimmerCh" : dmxDimmerCh,
-    "dmxPanCh"    : dmxPanCh,
-    "dmxTiltCh"   : dmxTiltCh,
-    "panCenter"   : panCenter,
-    "tiltCenter"  : tiltCenter,
-    "panFull"     : panFull,
-    "tiltFull"    : tiltFull,
-    "panMax"      : panMax,
-    "panMin"      : panMin,
-    "tiltMax"     : tiltMax,
-    "tiltMin"     : tiltMin
+    "dmxShutterCh"  : dmxShutterCh,
+    "dmxDimmerCh"   : dmxDimmerCh,
+    "dmxPanCh"      : dmxPanCh,
+    "dmxTiltCh"     : dmxTiltCh,
+    "panInvert"     : panInvert,
+    "tiltInvert"    : tiltInvert,
+    "panCenter"     : panCenter,
+    "tiltCenter"    : tiltCenter,
+    "panFull"       : panFull,
+    "tiltFull"      : tiltFull,
+    "panMax"        : panMax,
+    "panMin"        : panMin,
+    "tiltMax"       : tiltMax,
+    "tiltMin"       : tiltMin,
+    "shutterOpen"   : shutterOpen,
+    "shutterClosed" : shutterClosed
   };
 
   settingsString = JSON.stringify(settings);
@@ -452,4 +541,14 @@ document.addEventListener('DOMContentLoaded', function() {
   client.subscribe(topic);
   displaySettings();
   displayDMXStatus();
+
+  publishCommand(dmxShutterCh, shutter);
+  publishCommand(dmxDimmerCh, dimmer);
+  publishCommand(dmxPanCh, pan);
+  publishCommand(dmxTiltCh, tilt);
+
+  dimmerControl.value = dimmer;
+  panControl.value = pan;
+  tiltControl.value = tilt;
+
 });
