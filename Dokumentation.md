@@ -55,7 +55,7 @@ function publishCommand(channel, value) {
   displayDMXStatus();
 }
 ```
-[Link zum Code] (https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L233)
+[Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L233)
 #### 4. Behandlung von MQTT-Ereignissen
 Das Client-Objekt liefert Events, auf deren Eintritt reagiert werden kann. Das wichtigste Event ist das Message-Event:
 ``` js
