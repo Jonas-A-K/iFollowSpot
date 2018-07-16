@@ -42,13 +42,8 @@ var client = mqtt.connect({host: '192.168.1.1', port: 1883});
 ```
 [Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L9)
 Alle weiteren Funktionen, dieser Verbindungen können dann aus dem Objekt "client" heraus aufgerufen werden.
-#### 2. Abonnieren des Themas "ifollowspot"
-```js
-client.subscribe(topic);
-```
-[Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L541)
-#### 3. Senden von Steuerbefehlen für den Moving-Head
-Mit der Funktion `publishCommand` werden Steuerbefehle für den Moving-Head über MQTT versendet. Dies erfolgt im JSON-Format
+#### 2. Senden von Steuerbefehlen für den Moving-Head
+Mit der Funktion `publishCommand` werden Steuerbefehle für den Moving-Head über MQTT versendet. Dies erfolgt im JSON-Format.
 ```js
 function publishCommand(channel, value) {
   cmdObj = { "c":parseInt(channel), "v":parseInt(value) };
@@ -58,37 +53,19 @@ function publishCommand(channel, value) {
 }
 ```
 [Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L233)
+Zwei Variablen werden im JSON übergeben. Mit `c` wird der DMX-Kanal bezeichnet, mit `v`der zugehörige Wert. Die Funktion `publish` des MQTT-Clients senden letztendlich die Daten an den Broker.
+#### 3. Abonieren des Themas "ifollowspot"
+Wir abonieren das Thema "ifollowspot", um die Nachrichten, die wir verschicken auch selbst empfangen zu können. Dies dient dazu, dass die übertragenen Werte auch dem Nutzer im Frontend angezeigt werden können, und somit ein direktes Feedback zur Qualität der Verbindung besteht. Falls sich also z. B. der Wert des Dimmers nur sprunghaft und mit viel Verzögerung ändert, spricht dies für eine schlechte Verbindung zum Netzwerk.
+```js
+client.subscribe(topic);
+```
+[Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L541)
 #### 4. Behandlung von MQTT-Ereignissen
-Das Client-Objekt liefert Events, auf deren Eintritt reagiert werden kann. Das wichtigste Event ist das Message-Event:
+Das Client-Objekt liefert Events, auf deren Eintritt reagiert werden kann. Das wichtigste Event ist das Event `"message"`:
 ``` js
 client.on("message", function (topic, payload) {
-
-  cmdString = payload.toString();
-  cmdJSON = JSON.parse(cmdString);
-  channel = cmdJSON.c;
-  value = cmdJSON.v;
-
-  switch (parseInt(channel)) {
-    case dmxShutterCh:
-      shutter = value;
-      break;
-    case dmxDimmerCh:
-      dimmer = value;
-      break;
-    case dmxPanCh:
-      pan = value;
-      panDeg = Math.round(((((value * 65536) / 256) * panFull) / 65536) - (panFull / 2));
-      break;
-    case dmxTiltCh:
-      tilt = value;
-      tiltDeg = Math.round(((((value * 65536) / 256) * tiltFull) / 65536) - (tiltFull / 2));
-      break;
-    default:
-      break;
-  }
-  
-  displayDMXStatus()
-  
-});
+…
 ```
 [Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L292)
+Bei einer neuen Nachricht mit Topic "ifollowspot" wird mit Hilfe dieses Callbacks der aktuelle Status des jewiligen Kanals dem Nutzer angezeigt.
+Andere MQTT-Events sind `connect`, `reconnect`, `close`, `offline` und `error`, die im Frontend jeweils eine entsprechende Benachrichtung für den Nutzer auslösen und per Icon über den Status der Verbindung informieren.
