@@ -35,9 +35,57 @@ Das Signal wird hierbei über Netzwerk vom Mobilgerät an den Raspberry Pi über
 ## 6. MQTT-Client über Websockets
 Um MQTT in unserer Webapplikation verwenden zu können, nutzen wir MQTT über Websockets. Dafür verwenden wir die Bibliothek "MQTT.js", die sowohl für Node.js-Anwendungen als auch für den Browser entwickelt wurde. "MQTT.js" ist auf GitHub unter MIT-Lizenz frei verfügbar (https://github.com/mqttjs/MQTT.js).
 ### Verwendung von MQTT.js in unserer Webapplikaition
-1. Verbindung zum Server
+#### 1. Verbindung zum Server
 Um uns mit dem MQTT-Broker auf dem Raspberry Pi zu verbinden, richten wir eine MQTT-Websocket-Verbindung ein.
 ```js
 var client = mqtt.connect({host: '192.168.1.1', port: 1883});
 ```
 Alle weiteren Funktionen, dieser Verbindungen können dann aus dem Objekt "client" heraus aufgerufen werden.
+#### 2. Abonnieren des Themas "ifollowspot"
+```js
+client.subscribe(topic);
+```
+#### 3. Senden von Steuerbefehlen für den Moving-Head
+Mit der Funktion 'publishCommand' werden Steuerbefehle für den Moving-Head über MQTT versendet. Dies erfolgt im JSON-Format
+```js
+function publishCommand(channel, value) {
+  cmdObj = { "c":parseInt(channel), "v":parseInt(value) };
+  cmdJSON = JSON.stringify(cmdObj);
+  client.publish(topic, cmdJSON);
+  displayDMXStatus();
+}
+```
+[Link zum Code] (https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L233)
+#### 4. Behandlung von MQTT-Ereignissen
+Das Client-Objekt liefert Events, auf deren Eintritt reagiert werden kann. Das wichtigste Event ist das Message-Event:
+``` js
+client.on("message", function (topic, payload) {
+
+  cmdString = payload.toString();
+  cmdJSON = JSON.parse(cmdString);
+  channel = cmdJSON.c;
+  value = cmdJSON.v;
+
+  switch (parseInt(channel)) {
+    case dmxShutterCh:
+      shutter = value;
+      break;
+    case dmxDimmerCh:
+      dimmer = value;
+      break;
+    case dmxPanCh:
+      pan = value;
+      panDeg = Math.round(((((value * 65536) / 256) * panFull) / 65536) - (panFull / 2));
+      break;
+    case dmxTiltCh:
+      tilt = value;
+      tiltDeg = Math.round(((((value * 65536) / 256) * tiltFull) / 65536) - (tiltFull / 2));
+      break;
+    default:
+      break;
+  }
+  
+  displayDMXStatus()
+  
+});
+```
