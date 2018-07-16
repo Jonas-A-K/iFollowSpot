@@ -40,13 +40,15 @@ Um uns mit dem MQTT-Broker auf dem Raspberry Pi zu verbinden, richten wir eine M
 ```js
 var client = mqtt.connect({host: '192.168.1.1', port: 1883});
 ```
+[Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L9)
 Alle weiteren Funktionen, dieser Verbindungen können dann aus dem Objekt "client" heraus aufgerufen werden.
 #### 2. Abonnieren des Themas "ifollowspot"
 ```js
 client.subscribe(topic);
 ```
+[Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L541)
 #### 3. Senden von Steuerbefehlen für den Moving-Head
-Mit der Funktion 'publishCommand' werden Steuerbefehle für den Moving-Head über MQTT versendet. Dies erfolgt im JSON-Format
+Mit der Funktion `publishCommand` werden Steuerbefehle für den Moving-Head über MQTT versendet. Dies erfolgt im JSON-Format
 ```js
 function publishCommand(channel, value) {
   cmdObj = { "c":parseInt(channel), "v":parseInt(value) };
@@ -89,3 +91,4 @@ client.on("message", function (topic, payload) {
   
 });
 ```
+[Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L292)
