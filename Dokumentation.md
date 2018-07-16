@@ -32,3 +32,12 @@ Das Signal wird hierbei über Netzwerk vom Mobilgerät an den Raspberry Pi über
 * Laura Saupe: Fernbildübertragung (Kamerabild im Netzwerk zur Verfügung stellen)
 * Jonas Kern: Applikations-Entwicklung (Entwicklung der App mit Livebildanzeige und Steuerelementen)
 * Lasse Schinckel: Moving-Head-Steuerung (Umwandlung von Netzwerkübertragung zu DMX-Signalen)
+## 6. MQTT-Client über Websockets
+Um MQTT in unserer Webapplikation verwenden zu können, nutzen wir MQTT über Websockets. Dafür verwenden wir die Bibliothek "MQTT.js", die sowohl für Node.js-Anwendungen als auch für den Browser entwickelt wurde. "MQTT.js" ist auf GitHub unter MIT-Lizenz frei verfügbar (https://github.com/mqttjs/MQTT.js).
+### Verwendung von MQTT.js in unserer Webapplikaition
+1. Verbindung zum Server
+Um uns mit dem MQTT-Broker auf dem Raspberry Pi zu verbinden, richten wir eine MQTT-Websocket-Verbindung ein.
+```js
+var client = mqtt.connect({host: '192.168.1.1', port: 1883});
+```
+Alle weiteren Funktionen, dieser Verbindungen können dann aus dem Objekt "client" heraus aufgerufen werden.
