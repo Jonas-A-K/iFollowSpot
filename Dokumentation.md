@@ -4,11 +4,13 @@
 2. Fernbildübertragung (Laura Saupe)
 3. WLAN Access-Point (Laura Saupe)
 4. MQTT-Broker und -Client auf Raspberry Pi (Lasse Schinckel)
-5. RF24-Schnittstelle zum zweiten Raspberry Pi (Lasse Schinckel)
-6. MQTT-Client über Websockets (Jonas Kern)
-7. Videofeed in der Web-Applikation (Jonas Kern)
-8. Frontend der Web-Applikation (Jonas Kern)
-9. Fazit
+5. RF24-Schnittstelle zwischen Arduino und Raspberry Pi (Lasse Schinckel)
+6. DMX-Schnittstelle (Lasse Schinckel)
+7. Webapplikation (Jonas Kern)
+⋅⋅7.1 MQTT-Client über Websockets
+⋅⋅7.2 Videofeed
+⋅⋅7.3 Frontend
+8. Fazit
 ## 1. Einleitung
 ### Teilnehmer
 * Laura Saupe (2219616)
@@ -41,6 +43,7 @@ Um uns mit dem MQTT-Broker auf dem Raspberry Pi zu verbinden, richten wir eine M
 var client = mqtt.connect({host: '192.168.1.1', port: 1883});
 ```
 [Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L9)
+
 Alle weiteren Funktionen, dieser Verbindungen können dann aus dem Objekt "client" heraus aufgerufen werden.
 #### 2. Senden von Steuerbefehlen für den Moving-Head
 Mit der Funktion `publishCommand` werden Steuerbefehle für den Moving-Head über MQTT versendet. Dies erfolgt im JSON-Format.
@@ -53,6 +56,7 @@ function publishCommand(channel, value) {
 }
 ```
 [Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L233)
+
 Zwei Variablen werden im JSON übergeben. Mit `c` wird der DMX-Kanal bezeichnet, mit `v`der zugehörige Wert. Die Funktion `publish` des MQTT-Clients senden letztendlich die Daten an den Broker.
 #### 3. Abonieren des Themas "ifollowspot"
 Wir abonieren das Thema "ifollowspot", um die Nachrichten, die wir verschicken auch selbst empfangen zu können. Dies dient dazu, dass die übertragenen Werte auch dem Nutzer im Frontend angezeigt werden können, und somit ein direktes Feedback zur Qualität der Verbindung besteht. Falls sich also z. B. der Wert des Dimmers nur sprunghaft und mit viel Verzögerung ändert, spricht dies für eine schlechte Verbindung zum Netzwerk.
@@ -62,10 +66,42 @@ client.subscribe(topic);
 [Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L541)
 #### 4. Behandlung von MQTT-Ereignissen
 Das Client-Objekt liefert Events, auf deren Eintritt reagiert werden kann. Das wichtigste Event ist das Event `"message"`:
-``` js
+```js
 client.on("message", function (topic, payload) {
 …
 ```
 [Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L292)
+
 Bei einer neuen Nachricht mit Topic "ifollowspot" wird mit Hilfe dieses Callbacks der aktuelle Status des jewiligen Kanals dem Nutzer angezeigt.
 Andere MQTT-Events sind `connect`, `reconnect`, `close`, `offline` und `error`, die im Frontend jeweils eine entsprechende Benachrichtung für den Nutzer auslösen und per Icon über den Status der Verbindung informieren.
+## 7. Videofeed in der Webapplikation
+Der MJPEG-Stream, den der Raspberry Pi zur Verfügung stellt, wird in der Webapplikation über ein einfaches HTML `<img>`-Element integriert.
+```html
+<img class="fs-videofeed" src="http://192.168.1.1:8081" width="640" height="480">
+```
+[Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/1ff794e9e831501c3341e7d5210e8554b67e436a/iFollowSpot_web/index.html#L77)
+
+Diese einfache Lösung schränkt leider die Browserkompatibilität ein wenig ein. Apples Safari zeigt bei einem Reload der Seite in manchen Fällen kein Bild mehr. Dieses Problem besteht jedoch in keinem anderen modernen Browser wie z. B. Chrome oder Firefox.
+## 8. Frontend der Webapplikation
+Für das Frontend kommt das User-Interface-Framework "UIKit" zum Einsatz, welches auf https://getuikit.com mit MIT-Lizenz zur Verfügung steht. Das Framework kommt mit einer scss-Bibliothek und eine javascript-Bibliothek.
+### UIKit SCSS Implementierung
+Wir importieren UIKit in unsere [app.scss-Datei](https://github.com/Jonas-A-K/iFollowSpot/blob/master/iFollowSpot_web/scss/app.scss) die später alle unsere Styling-Anweisungen enthalten wird.
+```scss
+@import "../bower_components/uikit/src/scss/variables-theme.scss";
+@import "../bower_components/uikit/src/scss/mixins-theme.scss";
+…
+@import "../bower_components/uikit/src/scss/uikit-theme.scss";
+```
+[Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/1ff794e9e831501c3341e7d5210e8554b67e436a/iFollowSpot_web/scss/app.scss#L15)
+
+Somit können wir auf alle Variablen und Mixins zugreifen und das Framework für unser Design anpassen.
+### UIKit Javascript Implementierung
+Die Javascript-Bibliothek von UIKit wird direkt in index.html eingebunden.
+```html
+<script src="bower_components/uikit/dist/js/uikit.min.js"></script>
+<script src="bower_components/uikit/dist/js/uikit-icons.min.js"></script>
+```
+[Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/1ff794e9e831501c3341e7d5210e8554b67e436a/iFollowSpot_web/index.html#L8)
+
+Für schnellere Ladezeiten kommt hier die minifizierte Version zum Einsatz.
+## 
