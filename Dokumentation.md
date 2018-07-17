@@ -7,9 +7,10 @@
 5. RF24-Schnittstelle zwischen Arduino und Raspberry Pi (Lasse Schinckel)
 6. DMX-Schnittstelle (Lasse Schinckel)
 7. Webapplikation (Jonas Kern)
-⋅⋅7.1 MQTT-Client über Websockets
-⋅⋅7.2 Videofeed
-⋅⋅7.3 Frontend
+  7.1 MQTT-Client über Websockets
+  7.2 Videofeed
+  7.3 Frontend
+  7.4 Package Management und Build Process
 8. Fazit
 ## 1. Einleitung
 ### Teilnehmer
@@ -34,10 +35,11 @@ Das Signal wird hierbei über Netzwerk vom Mobilgerät an den Raspberry Pi über
 * Laura Saupe: Fernbildübertragung (Kamerabild im Netzwerk zur Verfügung stellen)
 * Jonas Kern: Applikations-Entwicklung (Entwicklung der App mit Livebildanzeige und Steuerelementen)
 * Lasse Schinckel: Moving-Head-Steuerung (Umwandlung von Netzwerkübertragung zu DMX-Signalen)
-## 6. MQTT-Client über Websockets
+## Webapplikation
+### 7.1 MQTT-Client über Websockets
 Um MQTT in unserer Webapplikation verwenden zu können, nutzen wir MQTT über Websockets. Dafür verwenden wir die Bibliothek "MQTT.js", die sowohl für Node.js-Anwendungen als auch für den Browser entwickelt wurde. "MQTT.js" ist auf GitHub unter MIT-Lizenz frei verfügbar (https://github.com/mqttjs/MQTT.js).
-### Verwendung von MQTT.js in unserer Webapplikaition
-#### 1. Verbindung zum Server
+#### Verwendung von MQTT.js in unserer Webapplikaition
+##### 1. Verbindung zum Server
 Um uns mit dem MQTT-Broker auf dem Raspberry Pi zu verbinden, richten wir eine MQTT-Websocket-Verbindung ein.
 ```js
 var client = mqtt.connect({host: '192.168.1.1', port: 1883});
@@ -45,7 +47,7 @@ var client = mqtt.connect({host: '192.168.1.1', port: 1883});
 [Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L9)
 
 Alle weiteren Funktionen, dieser Verbindungen können dann aus dem Objekt "client" heraus aufgerufen werden.
-#### 2. Senden von Steuerbefehlen für den Moving-Head
+##### 2. Senden von Steuerbefehlen für den Moving-Head
 Mit der Funktion `publishCommand` werden Steuerbefehle für den Moving-Head über MQTT versendet. Dies erfolgt im JSON-Format.
 ```js
 function publishCommand(channel, value) {
@@ -58,13 +60,13 @@ function publishCommand(channel, value) {
 [Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L233)
 
 Zwei Variablen werden im JSON übergeben. Mit `c` wird der DMX-Kanal bezeichnet, mit `v`der zugehörige Wert. Die Funktion `publish` des MQTT-Clients senden letztendlich die Daten an den Broker.
-#### 3. Abonieren des Themas "ifollowspot"
+##### 3. Abonieren des Themas "ifollowspot"
 Wir abonieren das Thema "ifollowspot", um die Nachrichten, die wir verschicken auch selbst empfangen zu können. Dies dient dazu, dass die übertragenen Werte auch dem Nutzer im Frontend angezeigt werden können, und somit ein direktes Feedback zur Qualität der Verbindung besteht. Falls sich also z. B. der Wert des Dimmers nur sprunghaft und mit viel Verzögerung ändert, spricht dies für eine schlechte Verbindung zum Netzwerk.
 ```js
 client.subscribe(topic);
 ```
 [Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/5347b54144479db5bdce12d285f371ea0b402455/iFollowSpot_web/js/app.js#L541)
-#### 4. Behandlung von MQTT-Ereignissen
+##### 4. Behandlung von MQTT-Ereignissen
 Das Client-Objekt liefert Events, auf deren Eintritt reagiert werden kann. Das wichtigste Event ist das Event `"message"`:
 ```js
 client.on("message", function (topic, payload) {
@@ -74,7 +76,7 @@ client.on("message", function (topic, payload) {
 
 Bei einer neuen Nachricht mit Topic "ifollowspot" wird mit Hilfe dieses Callbacks der aktuelle Status des jewiligen Kanals dem Nutzer angezeigt.
 Andere MQTT-Events sind `connect`, `reconnect`, `close`, `offline` und `error`, die im Frontend jeweils eine entsprechende Benachrichtung für den Nutzer auslösen und per Icon über den Status der Verbindung informieren.
-## 7. Videofeed in der Webapplikation
+### 7.2 Videofeed in der Webapplikation
 Der MJPEG-Stream, den der Raspberry Pi zur Verfügung stellt, wird in der Webapplikation über ein einfaches HTML `<img>`-Element integriert.
 ```html
 <img class="fs-videofeed" src="http://192.168.1.1:8081" width="640" height="480">
@@ -82,9 +84,9 @@ Der MJPEG-Stream, den der Raspberry Pi zur Verfügung stellt, wird in der Webapp
 [Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/1ff794e9e831501c3341e7d5210e8554b67e436a/iFollowSpot_web/index.html#L77)
 
 Diese einfache Lösung schränkt leider die Browserkompatibilität ein wenig ein. Apples Safari zeigt bei einem Reload der Seite in manchen Fällen kein Bild mehr. Dieses Problem besteht jedoch in keinem anderen modernen Browser wie z. B. Chrome oder Firefox.
-## 8. Frontend der Webapplikation
+### 7.3 Frontend
 Für das Frontend kommt das User-Interface-Framework "UIKit" zum Einsatz, welches auf https://getuikit.com mit MIT-Lizenz zur Verfügung steht. Das Framework kommt mit einer scss-Bibliothek und eine javascript-Bibliothek.
-### UIKit SCSS Implementierung
+#### UIKit SCSS Implementierung
 Wir importieren UIKit in unsere [app.scss-Datei](https://github.com/Jonas-A-K/iFollowSpot/blob/master/iFollowSpot_web/scss/app.scss) die später alle unsere Styling-Anweisungen enthalten wird.
 ```scss
 @import "../bower_components/uikit/src/scss/variables-theme.scss";
@@ -95,7 +97,7 @@ Wir importieren UIKit in unsere [app.scss-Datei](https://github.com/Jonas-A-K/iF
 [Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/1ff794e9e831501c3341e7d5210e8554b67e436a/iFollowSpot_web/scss/app.scss#L15)
 
 Somit können wir auf alle Variablen und Mixins zugreifen und das Framework für unser Design anpassen.
-### UIKit Javascript Implementierung
+#### UIKit Javascript Implementierung
 Die Javascript-Bibliothek von UIKit wird direkt in index.html eingebunden.
 ```html
 <script src="bower_components/uikit/dist/js/uikit.min.js"></script>
@@ -104,4 +106,5 @@ Die Javascript-Bibliothek von UIKit wird direkt in index.html eingebunden.
 [Link zum Code](https://github.com/Jonas-A-K/iFollowSpot/blob/1ff794e9e831501c3341e7d5210e8554b67e436a/iFollowSpot_web/index.html#L8)
 
 Für schnellere Ladezeiten kommt hier die minifizierte Version zum Einsatz.
-## 
+### 7.4 Package Management und Build Process
+Zur einfachen Verwaltung von Dependencies und zur schnellen, sicheren und effizienten Verarbeitung von SCSS und Javascript verwenden wir das Build-Tool [CodeKit](https://codekitapp.com). CodeKit integriert den Package Manager [Bower](https://bower.io) über den wir das UIKit-Framework verwalten und Updaten können. CodeKit übernimmt ebenfalls das Kompilieren von SCSS zu CSS, das Minifizieren für CSS und Javascript, sowie das Anlegen von Source-Maps. Vor der Verarbeitung prüft CodeKit auf Syntaxfehler. Die Build-Konfiguration unserer Webapplikation speichert CodeKit unter [iFollowSpot_web/config.codekit3](https://github.com/Jonas-A-K/iFollowSpot/blob/master/iFollowSpot_web/config.codekit3).
