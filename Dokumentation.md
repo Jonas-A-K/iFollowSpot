@@ -41,6 +41,7 @@ Das Signal wird hierbei über Netzwerk vom Mobilgerät an den Raspberry Pi über
 ## 2. Fernbildübertragung
 Zur Fernbildübertragung kommt die Applikation [Motion](https://motion-project.github.io) zum Einsatz, welche das Signal verschiedener Kameratypen in einem Netzwerk zur Verfügung stellen kann.
 ## 3. WLAN-Access-Point
+Der Raspberry Pi öffnet ein eigenes WLAN, in das der Nutzer sich mit seinem Mobilgerät einloggen kann, um auf die Webapplikation zuzugreifen.
 ## 4. MQTT-Broker und -Client auf Raspberry Pi
 ## 5. RF24-Schnittstelle zwischen Arduino und Raspberry Pi
 ## 6. DMX-Schnittstelle
@@ -85,7 +86,7 @@ client.on("message", function (topic, payload) {
 
 Bei einer neuen Nachricht mit Topic "ifollowspot" wird mit Hilfe dieses Callbacks der aktuelle Status des jewiligen Kanals dem Nutzer angezeigt.
 Andere MQTT-Events sind `connect`, `reconnect`, `close`, `offline` und `error`, die im Frontend jeweils eine entsprechende Benachrichtung für den Nutzer auslösen und per Icon über den Status der Verbindung informieren.
-### 7.2 Videofeed in der Webapplikation
+### 7.2 Videofeed
 Der MJPEG-Stream, den der Raspberry Pi zur Verfügung stellt, wird in der Webapplikation über ein einfaches HTML `<img>`-Element integriert.
 ```html
 <img class="fs-videofeed" src="http://192.168.1.1:8081" width="640" height="480">
