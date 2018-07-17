@@ -6,7 +6,7 @@
 4. MQTT-Broker und -Client auf Raspberry Pi (Lasse Schinckel)
 5. RF24-Schnittstelle zwischen Arduino und Raspberry Pi (Lasse Schinckel)
 6. DMX-Schnittstelle (Lasse Schinckel)
-7. [Webapplikation (Jonas Kern)](##-7-.-Webapplikation)
+7. [Webapplikation (Jonas Kern)](##7-Webapplikation)
    1. MQTT-Client über Websockets
    2. Videofeed
    3. Frontend
