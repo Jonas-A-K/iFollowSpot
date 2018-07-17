@@ -1,17 +1,17 @@
 # iFollowSpot – ITS-Projekt SoSe 2018
 ## Inhalt
-1. Einleitung
-2. Fernbildübertragung (Laura Saupe)
-3. WLAN Access-Point (Laura Saupe)
-4. MQTT-Broker und -Client auf Raspberry Pi (Lasse Schinckel)
-5. RF24-Schnittstelle zwischen Arduino und Raspberry Pi (Lasse Schinckel)
-6. DMX-Schnittstelle (Lasse Schinckel)
-7. [Webapplikation (Jonas Kern)](#7-Webapplikation)
+1. [Einleitung](#1-einleitung)
+2. [Fernbildübertragung (Laura Saupe)](#2-fernbildubertragung)
+3. [WLAN-Access-Point (Laura Saupe)](#3-wlan-access-point)
+4. [MQTT-Broker und -Client auf Raspberry Pi (Lasse Schinckel)](#4-mqtt-broker-und--client-auf-rasbperry-pi)
+5. [RF24-Schnittstelle zwischen Arduino und Raspberry Pi (Lasse Schinckel)](#5-rf24-schnittstelle-zwischen-arduino-und-raspberry-pi)
+6. [DMX-Schnittstelle (Lasse Schinckel)](#6-dmx-schnittstelle)
+7. [Webapplikation (Jonas Kern)](#7-webapplikation)
    1. MQTT-Client über Websockets
    2. Videofeed
    3. Frontend
    4. Package Management und Build Process
-8. Fazit
+8. [Fazit](#8-fazit)
 ## 1. Einleitung
 ### Teilnehmer
 * Laura Saupe (2219616)
@@ -40,6 +40,10 @@ Das Signal wird hierbei über Netzwerk vom Mobilgerät an den Raspberry Pi über
 * Lasse Schinckel: Moving-Head-Steuerung (Umwandlung von Netzwerkübertragung zu DMX-Signalen)
 ## 2. Fernbildübertragung
 Zur Fernbildübertragung kommt die Applikation [Motion](https://motion-project.github.io) zum Einsatz, welche das Signal verschiedener Kameratypen in einem Netzwerk zur Verfügung stellen kann.
+## 3. WLAN-Access-Point
+## 4. MQTT-Broker und -Client auf Raspberry Pi
+## 5. RF24-Schnittstelle zwischen Arduino und Raspberry Pi
+## 6. DMX-Schnittstelle
 ## 7. Webapplikation
 ### 7.1 MQTT-Client über Websockets
 Um MQTT in unserer Webapplikation verwenden zu können, nutzen wir MQTT über Websockets. Dafür verwenden wir die Bibliothek "MQTT.js", die sowohl für Node.js-Anwendungen als auch für den Browser entwickelt wurde. "MQTT.js" ist auf GitHub unter MIT-Lizenz frei verfügbar (https://github.com/mqttjs/MQTT.js).
@@ -113,3 +117,4 @@ Die Javascript-Bibliothek von UIKit wird direkt in [index.html](https://github.c
 Für schnellere Ladezeiten kommt hier die minifizierte Version zum Einsatz.
 ### 7.4 Package Management und Build Process
 Zur einfachen Verwaltung von Dependencies und zur schnellen, sicheren und effizienten Verarbeitung von SCSS und Javascript verwenden wir das Build-Tool [CodeKit](https://codekitapp.com). CodeKit integriert den Package Manager [Bower](https://bower.io) über den wir das UIKit-Framework verwalten und Updaten können. CodeKit übernimmt ebenfalls das Kompilieren von SCSS zu CSS, das Minifizieren für CSS und Javascript, sowie das Anlegen von Source-Maps. Vor der Verarbeitung prüft CodeKit auf Syntaxfehler. Die Build-Konfiguration unserer Webapplikation speichert CodeKit unter [iFollowSpot_web/config.codekit3](https://github.com/Jonas-A-K/iFollowSpot/blob/master/iFollowSpot_web/config.codekit3).
+## 8. Fazit
