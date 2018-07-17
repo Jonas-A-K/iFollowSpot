@@ -7,10 +7,10 @@
 5. RF24-Schnittstelle zwischen Arduino und Raspberry Pi (Lasse Schinckel)
 6. DMX-Schnittstelle (Lasse Schinckel)
 7. Webapplikation (Jonas Kern)
-    7.1 MQTT-Client über Websockets
-    7.2 Videofeed
-    7.3 Frontend
-    7.4 Package Management und Build Process
+   7.1 MQTT-Client über Websockets
+   7.2 Videofeed
+   7.3 Frontend
+   7.4 Package Management und Build Process
 8. Fazit
 ## 1. Einleitung
 ### Teilnehmer
@@ -90,7 +90,7 @@ Der MJPEG-Stream, den der Raspberry Pi zur Verfügung stellt, wird in der Webapp
 
 Diese einfache Lösung schränkt leider die Browserkompatibilität ein wenig ein. Apples Safari zeigt bei einem Reload der Seite in manchen Fällen kein Bild mehr. Dieses Problem besteht jedoch in keinem anderen modernen Browser wie z. B. Chrome oder Firefox.
 ### 7.3 Frontend
-Für das Frontend kommt das User-Interface-Framework "UIKit" zum Einsatz, welches auf https://getuikit.com mit MIT-Lizenz zur Verfügung steht. Das Framework kommt mit einer scss-Bibliothek und eine javascript-Bibliothek.
+Für das Frontend kommt das User-Interface-Framework "UIKit" zum Einsatz, welches auf https://getuikit.com mit MIT-Lizenz zur Verfügung steht. Das Framework kommt mit einer SCSS-Bibliothek und eine Javascript-Bibliothek.
 #### UIKit SCSS Implementierung
 Wir importieren UIKit in unsere [app.scss-Datei](https://github.com/Jonas-A-K/iFollowSpot/blob/master/iFollowSpot_web/scss/app.scss) die später alle unsere Styling-Anweisungen enthalten wird.
 ```scss
@@ -103,7 +103,7 @@ Wir importieren UIKit in unsere [app.scss-Datei](https://github.com/Jonas-A-K/iF
 
 Somit können wir auf alle Variablen und Mixins zugreifen und das Framework für unser Design anpassen.
 #### UIKit Javascript Implementierung
-Die Javascript-Bibliothek von UIKit wird direkt in index.html eingebunden.
+Die Javascript-Bibliothek von UIKit wird direkt in [index.html](https://github.com/Jonas-A-K/iFollowSpot/blob/master/iFollowSpot_web/index.html) eingebunden.
 ```html
 <script src="bower_components/uikit/dist/js/uikit.min.js"></script>
 <script src="bower_components/uikit/dist/js/uikit-icons.min.js"></script>
