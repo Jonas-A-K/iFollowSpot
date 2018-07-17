@@ -7,10 +7,10 @@
 5. RF24-Schnittstelle zwischen Arduino und Raspberry Pi (Lasse Schinckel)
 6. DMX-Schnittstelle (Lasse Schinckel)
 7. Webapplikation (Jonas Kern)
-  7.1 MQTT-Client über Websockets
-  7.2 Videofeed
-  7.3 Frontend
-  7.4 Package Management und Build Process
+    7.1 MQTT-Client über Websockets
+    7.2 Videofeed
+    7.3 Frontend
+    7.4 Package Management und Build Process
 8. Fazit
 ## 1. Einleitung
 ### Teilnehmer
@@ -25,7 +25,10 @@ Eine Applikation auf einem Mobilgerät empfängt das Videosignal der USB-Kamera 
 Mit virtuellen Kontrollelementen auf dem Display lassen sich Parameter wie Drehung, Neigung, Zoom etc. einstellen, die vom Moving-Head umgesetzt werden.
 Das Signal wird hierbei über Netzwerk vom Mobilgerät an den Raspberry Pi übertragen und per Funk an einen weiteren Mikrocomputer übertragen, der sich an der Basis des Scheinwerfers befindet. Über ein DMX-Interface erhält der Moving-Head sein Steuersignal.
 ### Verwendete Geräte
-* Raspberry Pi 3 B (2x)
+* Raspberry Pi 3 B
+* Arduino Nano
+* RF24 Transceiver (2x)
+* MAX485 Interface für DMX
 * USB-Webcam
 * Montagematerial zur Befestigung der Kamera
 * DMX-Interface
@@ -35,7 +38,9 @@ Das Signal wird hierbei über Netzwerk vom Mobilgerät an den Raspberry Pi über
 * Laura Saupe: Fernbildübertragung (Kamerabild im Netzwerk zur Verfügung stellen)
 * Jonas Kern: Applikations-Entwicklung (Entwicklung der App mit Livebildanzeige und Steuerelementen)
 * Lasse Schinckel: Moving-Head-Steuerung (Umwandlung von Netzwerkübertragung zu DMX-Signalen)
-## Webapplikation
+## 2. Fernbildübertragung
+Zur Fernbildübertragung kommt die Applikation [Motion](https://motion-project.github.io) zum Einsatz, welche das Signal verschiedener Kameratypen in einem Netzwerk zur Verfügung stellen kann.
+## 7. Webapplikation
 ### 7.1 MQTT-Client über Websockets
 Um MQTT in unserer Webapplikation verwenden zu können, nutzen wir MQTT über Websockets. Dafür verwenden wir die Bibliothek "MQTT.js", die sowohl für Node.js-Anwendungen als auch für den Browser entwickelt wurde. "MQTT.js" ist auf GitHub unter MIT-Lizenz frei verfügbar (https://github.com/mqttjs/MQTT.js).
 #### Verwendung von MQTT.js in unserer Webapplikaition
