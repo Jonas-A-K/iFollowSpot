@@ -1,16 +1,16 @@
 # iFollowSpot – ITS-Projekt SoSe 2018
 ## Inhalt
 1. [Einleitung](#1-einleitung)
-2. [Fernbildübertragung (Laura Saupe)](#2-fernbildubertragung)
+2. [Fernbildübertragung (Laura Saupe)](#2-fernbildübertragung)
 3. [WLAN-Access-Point (Laura Saupe)](#3-wlan-access-point)
-4. [MQTT-Broker und -Client auf Raspberry Pi (Lasse Schinckel)](#4-mqtt-broker-und--client-auf-rasbperry-pi)
+4. [MQTT-Broker und -Client auf Raspberry Pi (Lasse Schinckel)](#4-mqtt-broker-und--client-auf-raspberry-pi)
 5. [RF24-Schnittstelle zwischen Arduino und Raspberry Pi (Lasse Schinckel)](#5-rf24-schnittstelle-zwischen-arduino-und-raspberry-pi)
 6. [DMX-Schnittstelle (Lasse Schinckel)](#6-dmx-schnittstelle)
 7. [Webapplikation (Jonas Kern)](#7-webapplikation)
-   1. MQTT-Client über Websockets
-   2. Videofeed
-   3. Frontend
-   4. Package Management und Build Process
+   1. [MQTT-Client über Websockets](#71-mqtt-client-über-websockets)
+   2. [Videofeed](#72-videofeed)
+   3. [Frontend](#73-frontend)
+   4. [Package Management und Build Process](#74-package-management-und-build-process)
 8. [Fazit](#8-fazit)
 ## 1. Einleitung
 ### Teilnehmer
