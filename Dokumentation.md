@@ -20,10 +20,13 @@
 ### Kurzbeschreibung
 Unser Produkt ermöglicht die Nachrüstung eines herkömmlichen DMX-gesteuerten Moving-Heads zu einem ferngesteuerten Verfolgerscheinwerfer mit Fernbildübertragung.
 ### Technische Umsetzung
-Eine auf einem Moving-Head befestigte USB-Kamera übertragt ihr Livevideo an einen Raspberry Pi. Der Mikrocomputer stellt diesen Livestream per Netzwerk zur Verfügung.
-Eine Applikation auf einem Mobilgerät empfängt das Videosignal der USB-Kamera und stellt dieses auf seinem Display dar.
-Mit virtuellen Kontrollelementen auf dem Display lassen sich Parameter wie Drehung, Neigung, Zoom etc. einstellen, die vom Moving-Head umgesetzt werden.
-Das Signal wird hierbei über Netzwerk vom Mobilgerät an den Raspberry Pi übertragen und per Funk an einen weiteren Mikrocomputer übertragen, der sich an der Basis des Scheinwerfers befindet. Über ein DMX-Interface erhält der Moving-Head sein Steuersignal.
+USB-Kamera und Raspberry-Pi werden am Kopf des Scheinwerfers befestigt und über einen Akku mit Strom versorgt. Durch den Akku ist keine Kabelverbindung zur Basis des Scheinwerfers nötig, die die Bewegung des Kopfes einschränken würde.
+
+Der Raspberry Pi stellt eine Webapplikation zur Verfügung, die sich auf allen modernen Smartphones und Tablets unabhängig vom verwendeten Betriebssystem ausführen lässt. Die App zeigt das Livebild der Kamera und bietet virtuelle Steuerelemente zur Kontrolle des Scheinwerfers. Das Gerät muss sich dafür im kabellosen Netzwerk des Raspberry Pis befinden.
+
+Die Steuersignale des Nutzers werden per Netzwerk an den Raspberry Pi geschickt. Dieser sendet das Signal über eine 2,4GHz Funkverbindung (RF-24 Transceiver) zum Wireless-DMX-Controller an der Basis des Scheinwerfers.
+
+Der Wireless-DMX-Controller besteht aus einem Arduino Nano Mikrocomputer, einem weiteren RF-24 Transceiver zum Empfang der Steuersingale und einem DMX-Interface. Der Arduino dekodiert die empfangenen Steuersignale und stellt sie über seine serielle Schnittstelle dem DMX-Interface zur Verfügung, welches daraus ein Signal nach DMX-Standard erzeugt, welches quasi von jedem Scheinwerfer verwendet wird.
 ### Verwendete Geräte
 * Raspberry Pi 3 B
 * Arduino Nano
@@ -35,7 +38,7 @@ Das Signal wird hierbei über Netzwerk vom Mobilgerät an den Raspberry Pi über
 * Mobilgerät (Tablet, Smartphone)
 * Moving-Head-Scheinwerfer
 ### Arbeitsbereiche
-* Laura Saupe: Fernbildübertragung (Kamerabild im Netzwerk zur Verfügung stellen)
+* Laura Saupe: Fernbildübertragung (Kamerabild im Netzwerk zur Verfügung stellen), WLAN-Einrichtung
 * Jonas Kern: Applikations-Entwicklung (Entwicklung der App mit Livebildanzeige und Steuerelementen)
 * Lasse Schinckel: Moving-Head-Steuerung (Umwandlung von Netzwerkübertragung zu DMX-Signalen)
 ## 2. Fernbildübertragung
