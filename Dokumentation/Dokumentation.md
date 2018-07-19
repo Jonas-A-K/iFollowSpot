@@ -11,7 +11,8 @@
    2. [Videofeed](#72-videofeed)
    3. [Frontend](#73-frontend)
    4. [Package Management und Build Process](#74-package-management-und-build-process)
-8. [Fazit](#8-fazit)
+8. [Plakat](#8-plakat)
+9. [Fazit](#9-fazit)
 ## 1. Einleitung
 ### Teilnehmer
 * Laura Saupe (2219616)
@@ -37,8 +38,13 @@ Der Wireless-DMX-Controller besteht aus einem Arduino Nano Mikrocomputer, einem 
 * DMX-Interface
 * Mobilgerät (Tablet, Smartphone)
 * Moving-Head-Scheinwerfer
+![iFollowSpot Geräte](/Dokumentation/iFollowSpot_Geraete.jpg)
+Übersicht zu verwendeten Komponenten
+![iFollowSpot Arduino Box](/Dokumentation/iFollowSpot_Box.jpg)
+Geöffnete 3D-gedruckte Box mit Arduino, MAX485 und NRF24
 ### Schaltplan
 ![iFollowSpot Schaltplan](/Dokumentation/iFollowSpot_Schaltplan.png)
+Schaltplan, Funkverbindung durch gestrichelte Linie dargestellt
 ### Arbeitsbereiche
 * Laura Saupe: Fernbildübertragung (Kamerabild im Netzwerk zur Verfügung stellen), WLAN-Einrichtung
 * Jonas Kern: Applikations-Entwicklung (Entwicklung der App mit Livebildanzeige und Steuerelementen)
@@ -123,4 +129,6 @@ Die Javascript-Bibliothek von UIKit wird direkt in [index.html](https://github.c
 Für schnellere Ladezeiten kommt hier die minifizierte Version zum Einsatz.
 ### 7.4 Package Management und Build Process
 Zur einfachen Verwaltung von Dependencies und zur schnellen, sicheren und effizienten Verarbeitung von SCSS und Javascript verwenden wir das Build-Tool [CodeKit](https://codekitapp.com). CodeKit integriert den Package Manager [Bower](https://bower.io) über den wir das UIKit-Framework verwalten und Updaten können. CodeKit übernimmt ebenfalls das Kompilieren von SCSS zu CSS, das Minifizieren für CSS und Javascript, sowie das Anlegen von Source-Maps. Vor der Verarbeitung prüft CodeKit auf Syntaxfehler. Die Build-Konfiguration unserer Webapplikation speichert CodeKit unter [iFollowSpot_web/config.codekit3](https://github.com/Jonas-A-K/iFollowSpot/blob/master/iFollowSpot_web/config.codekit3).
-## 8. Fazit
+## 8. Plakat
+![iFollowSpot Plakat](/Dokumentation/iFollowSpot_Plakat.jpg)
+## 9. Fazit
