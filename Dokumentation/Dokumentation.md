@@ -51,8 +51,12 @@ Schaltplan, Funkverbindung durch gestrichelte Linie dargestellt
 * Lasse Schinckel: Moving-Head-Steuerung (Umwandlung von Netzwerkübertragung zu DMX-Signalen)
 ## 2. Fernbildübertragung
 Zur Fernbildübertragung kommt die Applikation [Motion](https://motion-project.github.io) zum Einsatz, welche das Signal verschiedener Kameratypen in einem Netzwerk zur Verfügung stellen kann.
+- Konfiguration (config-Datei) mit Auflösung, Codec, Protokoll, Port etc.
+- verwendetes Tutorial
 ## 3. WLAN-Access-Point
 Der Raspberry Pi öffnet ein eigenes WLAN, in das der Nutzer sich mit seinem Mobilgerät einloggen kann, um auf die Webapplikation zuzugreifen.
+- Konfiguration über Netzwerk-Config des Raspberrys
+- verwendetes Tutorial
 ## 4. MQTT-Broker und -Client auf Raspberry Pi
 ## 5. RF24-Schnittstelle zwischen Arduino und Raspberry Pi
 ## 6. DMX-Schnittstelle
