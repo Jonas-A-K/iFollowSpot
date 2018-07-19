@@ -54,9 +54,8 @@ Zur Fernbildübertragung kommt die Applikation [Motion](https://motion-project.g
 - Konfiguration (config-Datei) mit Auflösung, Codec, Protokoll, Port etc.
 - verwendetes Tutorial
 ## 3. WLAN-Access-Point
-Der Raspberry Pi öffnet ein eigenes WLAN, in das der Nutzer sich mit seinem Mobilgerät einloggen kann, um auf die Webapplikation zuzugreifen.
-- Konfiguration über Netzwerk-Config des Raspberrys
-- verwendetes Tutorial
+Der Raspberry Pi öffnet ein eigenes WLAN, in das der Nutzer sich mit seinem Mobilgerät einloggen kann, um auf die Webapplikation zuzugreifen. Hierzu wurde der Raspberry Pi neu aufgesetzt und eine statische IP in den Nutzerkonfigurationen erstellt. Für die Zuweisung der Nutzerkonfigurationen wurde ein DHCP-Server und eine DNS-Maske angegeben. 
+Folgendes Tutorial wurde zur Hilfe genommen: [WLAN-Accsess-Point](https://www.elektronik-kompendium.de/sites/raspberry-pi/2002171.htm)
 ## 4. MQTT-Broker und -Client auf Raspberry Pi
 ## 5. RF24-Schnittstelle zwischen Arduino und Raspberry Pi
 ## 6. DMX-Schnittstelle
