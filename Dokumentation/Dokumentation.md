@@ -37,8 +37,13 @@ Der Wireless-DMX-Controller besteht aus einem Arduino Nano Mikrocomputer, einem 
 * DMX-Interface
 * Mobilgerät (Tablet, Smartphone)
 * Moving-Head-Scheinwerfer
+![iFollowSpot Geräte](/Dokumentation/iFollowSpot_Geraete.jpg)
+Übersicht zu verwendeten Komponenten
+![iFollowSpot Arduino Box](/Dokumentation/iFollowSpot_Box.jpg)
+Geöffnete 3D-gedruckte Box mit Arduino, MAX485 und NRF24
 ### Schaltplan
 ![iFollowSpot Schaltplan](/Dokumentation/iFollowSpot_Schaltplan.png)
+Schaltplan, Funkverbindung durch gestrichelte Linie dargestellt
 ### Arbeitsbereiche
 * Laura Saupe: Fernbildübertragung (Kamerabild im Netzwerk zur Verfügung stellen), WLAN-Einrichtung
 * Jonas Kern: Applikations-Entwicklung (Entwicklung der App mit Livebildanzeige und Steuerelementen)
