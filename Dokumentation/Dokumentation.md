@@ -71,60 +71,26 @@ Mit dem bei uns eingesetzten nRF24L01 haben wir eine GHz-Funkverbindung vom Rasp
 Für die Umsetzung wurde folgender Guide ( https://github.com/nRF24/RF24(https://tutorials-raspberrypi.de/funkkommunikation-zwischen-raspberry-pis-und-arduinos-2-4-ghz/) genutzt.
 
 #### Senderseite
-
 Der Raspberry Pi gibt die über MQTT empfangenden Daten über den nRF24 weiter an den Arduino. Der Chip nutzt das SPI Interface vom Raspberry Pi, somit muss dieses erst in der Konfiguration freigeschaltet werden. 
 
 Zuerst muss dem Raspberry Pi gesagt werden, auf welche GPIO Pins die Information verschickt werden soll.
-
-(CODE)
-
 Um Daten schicken zu können, darf der Raspberry Pi nicht empfangen oder anders „nicht zuhören“.
-
-(CODE)
-
 Jetzt kann die Payload verschickt werden.
-
-(CODE)
-
 Als letztes hört der Raspberry Pi wieder zu und prüft eine Response oder einen Timeout. 
-
-(CODE)
-
 Der Code wird immer nur on_message ausgeführt. D.h. es wird immer nur ein Signal geschickt wenn auch ein Signal über MQTT angekommen ist.
-
 #### Empfängerseite
-
 Am Arduino wird dann die Nachricht empfangen und entschlüsselt.
-
 Auch dem Arduino muss mitgeteilt werden auf welchen Pins der Datenfluss stattfindet.
-
-(CODE)
-
 Um dynamische Größen empfangen zu können, müssen dynamische Payloads aktiviert werden.
-
-(CODE)
-
 Mit einer dynamischen Payload Größe können nun die Daten ausgelesen werden.
-
-(CODE)
-
-
 Am Ende schickt der Arduino eine Response zurück.
-
-(CODE)
 ## 6. DMX-Schnittstelle
 Der MAX485 ist eine physikalische Schnittstelle zur Übertragung eines invertierten und eines nichtinvertierten Datensignals. Dieser Standart wird RS-485 genannt. Dieser wurde gewählt, da DMX genau auf diesem Standart basiert und nur noch Pulsfolgen, die dem DMX Protokoll entsprechen, geschickt werden müssen. Für die Übertragung der Daten ist der tx Pin vom MAX485 zuständig. Dieser gibt das Signal einmal invertiert und einmal nicht invertiert an die beiden Ausgänge A und B. Diese werden dann mit einem 3 oder 5 poligen XLR Stecker verbunden. Bei unserem Projekt haben wir uns für die 5 polige Variante entschieden. Für eine sicherere Variante wäre noch eine Erdung nötig, die wir im kleinen Rahmen des Projektes jedoch vernachlässigt haben.
 
 Zur Übertragung von DMX Daten wurde auf dem Arduino die Library von Van der Meeren (https://github.com/rad1o/l0unge-sender/tree/master/arduino_dmx) genutzt.
 
 Für die Einstellung eines DMX Channels wird dann nur der Channel und die dazugehörige Value benötigt, welche über den nRF24 als .json Datei weitergeleitet wurden. Hierfür wird die .json Datei entpackt.
-
-(CODE)
-
 Danach werden die Werte in DMX Pulsfolgen umgewandelt.
-
-(CODE)
-
 Erst jetzt erhält der Movinghead ein DMX Signal und zeigt dies über eine Kontrollleuchte an.
 ## 7. Webapplikation
 ### 7.1 MQTT-Client über Websockets
