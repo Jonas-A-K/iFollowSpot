@@ -70,7 +70,7 @@ Mit dem bei uns eingesetzten nRF24L01 haben wir eine GHz-Funkverbindung vom Rasp
 
 Für die Umsetzung wurde folgender [Guide]( https://github.com/nRF24/RF24(https://tutorials-raspberrypi.de/funkkommunikation-zwischen-raspberry-pis-und-arduinos-2-4-ghz/) genutzt.
 
-##### Senderseite
+#### Senderseite
 
 Der Raspberry Pi gibt die über MQTT empfangenden Daten über den nRF24 weiter an den Arduino. Der Chip nutzt das SPI Interface vom Raspberry Pi, somit muss dieses erst in der Konfiguration freigeschaltet werden. 
 
@@ -92,7 +92,7 @@ Als letztes hört der Raspberry Pi wieder zu und prüft eine Response oder einen
 
 Der Code wird immer nur on_message ausgeführt. D.h. es wird immer nur ein Signal geschickt wenn auch ein Signal über MQTT angekommen ist.
 
-##### Empfängerseite
+#### Empfängerseite
 
 Am Arduino wird dann die Nachricht empfangen und entschlüsselt.
 
