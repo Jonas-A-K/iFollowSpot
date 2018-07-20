@@ -68,7 +68,7 @@ Die IP Adresse vom Raspberry Pi wird hierbei als Broker Adresse genutzt. Um dann
 Mit dem bei uns eingesetzten nRF24L01 haben wir eine GHz-Funkverbindung vom Raspberry Pi zum Arduino an der Basis des Movingheads hergestellt, um für Mobilität des Kopfes zu sorgen. Hierfür wurde eine freie Library für den RF24 genutzt
 [Library](https://github.com/nRF24/RF24).
 
-Für die Umsetzung wurde folgender [Guide]( https://github.com/nRF24/RF24(https://tutorials-raspberrypi.de/funkkommunikation-zwischen-raspberry-pis-und-arduinos-2-4-ghz/) genutzt.
+Für die Umsetzung wurde folgender Guide ( https://github.com/nRF24/RF24(https://tutorials-raspberrypi.de/funkkommunikation-zwischen-raspberry-pis-und-arduinos-2-4-ghz/) genutzt.
 
 #### Senderseite
 
