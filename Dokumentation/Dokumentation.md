@@ -202,3 +202,6 @@ Zur einfachen Verwaltung von Dependencies und zur schnellen, sicheren und effizi
 ## 8. Plakat
 ![iFollowSpot Plakat](/Dokumentation/iFollowSpot_Plakat.jpg)
 ## 9. Fazit
+Zum Ende einer spannenden und anstrengenden Projektphase sind wir, als Gruppe, zufrieden die angestrebten Ziele, Steuerung eines Scheinwerfers mittels DMX Protokoll über eine Webapplication und visuelle Kontrolle durch Fernbildübertragung, erreicht zu haben. Sollte eine Weiterentwicklung angestrebt werden, so sollte die USB-Kamera durch eine wireless-Lösung ersetzt werden, um den Raspberry Pi vom beweglichen Teil des Moving Heads zur Basis zu verlegen. Zudem kann die DMX-Steuerung, welche Momentan noch störanfällig ist, verbessert werden. Nun da der Grundstein gelegt ist, können nicht nur die realisierten Steuerungsmöglichkeiten (Pan, Tilt, Dimmer) des Scheinwerfers modifiziert werden, es lässt sich ein ganzes DMX-Universum ansteuern. 
+
+Da unser Produkt mit jedem DMX-gesteuerten Scheinwerfer kompatibel ist, könnte es automatisierten teuren Verfolgerscheinwerfer-Systeme, wie dem Followspot 2.0 von PRG, als günstige Alternative durchaus Konkurrenz machen. 
