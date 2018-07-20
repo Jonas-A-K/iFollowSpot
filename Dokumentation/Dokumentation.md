@@ -51,9 +51,9 @@ Schaltplan, Funkverbindung durch gestrichelte Linie dargestellt
 * Lasse Schinckel: Moving-Head-Steuerung (Umwandlung von Netzwerkübertragung zu DMX-Signalen)
 ## 2. Fernbildübertragung
 Zur Fernbildübertragung kommt die Applikation [Motion](https://motion-project.github.io) zum Einsatz, welche das Signal verschiedener Kameratypen in einem Netzwerk zur Verfügung stellen kann. Damit im Betrieb der Verfolger-Operator ein flüssig laufendes Livebild der Szenerie bekommt, in dem der Bildinhalt ausreichend erkäntlich ist wurden folgende Konfigurationen gewählt:
-    Bildauflösung: 480x640px
-    Codec: MPEG 422P
-    Framerate: 25fps 
+- Bildauflösung: 480x640px
+- Codec: MPEG 422P
+- Framerate: 25fps 
 Motion bietet die Möglichkeit Videos, Timelaps und Fotos zu speichern. Diese Funktion wurde ausgeschaltet, weil dadurch die Arbeitsleistungs des Raspberry Pi erheblich gemindert wurde, was dazu führte das ein delayfreier Livestream nicht mehr übermittelt werden konnte. 
 Folgendes Tutorial wurde verwendet: [Raspi als Überwachungskamera](https://tutorials-raspberrypi.de/raspberry-pi-ueberwachungskamera-livestream-einrichten/)
 ## 3. WLAN-Access-Point
