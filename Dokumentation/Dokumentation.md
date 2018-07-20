@@ -58,7 +58,7 @@ Zur Fernbildübertragung kommt die Applikation [Motion](https://motion-project.g
 Motion bietet die Möglichkeit Videos, Timelaps und Fotos zu speichern. Diese Funktion wurde ausgeschaltet, weil dadurch die Arbeitsleistungs des Raspberry Pi erheblich gemindert wurde, was dazu führte das ein delayfreier Livestream nicht mehr übermittelt werden konnte. 
 Folgendes Tutorial wurde verwendet: [Raspi als Überwachungskamera](https://tutorials-raspberrypi.de/raspberry-pi-ueberwachungskamera-livestream-einrichten/)
 ## 3. WLAN-Access-Point
-Der Raspberry Pi öffnet ein eigenes WLAN, in das der Nutzer sich mit seinem Mobilgerät einloggen kann, um auf die Webapplikation zuzugreifen. Hierzu wurde der Raspberry Pi neu aufgesetzt und eine statische IP in den Nutzerkonfigurationen erstellt. Für die Zuweisung der Nutzerkonfigurationen wurde ein DHCP-Server und eine DNS-Maske angegeben. 
+Der Raspberry Pi öffnet ein eigenes WLAN: "iFollowSpot", in welches der Nutzer sich mit seinem Mobilgerät einloggen kann, um auf die Webapplikation zuzugreifen. Hierzu wurde der Raspberry Pi neu aufgesetzt und eine statische IP in den Nutzerkonfigurationen erstellt. Für die Zuweisung der Nutzerkonfigurationen wurde ein DHCP-Server und eine DNS-Maske angegeben. 
 Folgendes Tutorial wurde zur Hilfe genommen: [WLAN-Accsess-Point](https://www.elektronik-kompendium.de/sites/raspberry-pi/2002171.htm)
 ## 4. MQTT-Broker und -Client auf Raspberry Pi
 ## 5. RF24-Schnittstelle zwischen Arduino und Raspberry Pi
