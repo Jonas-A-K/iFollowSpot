@@ -54,6 +54,7 @@ Zur Fernbildübertragung kommt die Applikation [Motion](https://motion-project.g
 - Bildauflösung: 480x640px
 - Codec: MPEG 422P
 - Framerate: 25fps 
+
 Motion bietet die Möglichkeit Videos, Timelaps und Fotos zu speichern. Diese Funktion wurde ausgeschaltet, weil dadurch die Arbeitsleistungs des Raspberry Pi erheblich gemindert wurde, was dazu führte das ein delayfreier Livestream nicht mehr übermittelt werden konnte. 
 Folgendes Tutorial wurde verwendet: [Raspi als Überwachungskamera](https://tutorials-raspberrypi.de/raspberry-pi-ueberwachungskamera-livestream-einrichten/)
 ## 3. WLAN-Access-Point
